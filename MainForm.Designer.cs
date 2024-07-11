@@ -1,6 +1,6 @@
 ﻿namespace SecureNotesApp
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,8 +29,11 @@
         private void InitializeComponent()
         {
             notes_list_panel = new Panel();
-            test_note_open_button = new Button();
-            test_note_name = new Label();
+            add_note_button = new Button();
+            info_button = new Button();
+            open_folder_button = new Button();
+            settings_button = new Button();
+            notes_buttons_list = new FlowLayoutPanel();
             current_note_panel = new Panel();
             current_note_text = new RichTextBox();
             current_note_title = new TextBox();
@@ -41,43 +44,72 @@
             // 
             // notes_list_panel
             // 
-            notes_list_panel.Controls.Add(test_note_open_button);
-            notes_list_panel.Controls.Add(test_note_name);
-            notes_list_panel.Location = new Point(12, 12);
+            notes_list_panel.Controls.Add(add_note_button);
+            notes_list_panel.Controls.Add(info_button);
+            notes_list_panel.Controls.Add(open_folder_button);
+            notes_list_panel.Controls.Add(settings_button);
+            notes_list_panel.Controls.Add(notes_buttons_list);
+            notes_list_panel.Location = new Point(10, 10);
             notes_list_panel.Name = "notes_list_panel";
-            notes_list_panel.Size = new Size(776, 426);
+            notes_list_panel.Size = new Size(762, 499);
             notes_list_panel.TabIndex = 0;
             // 
-            // test_note_open_button
+            // add_note_button
             // 
-            test_note_open_button.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            test_note_open_button.Cursor = Cursors.Hand;
-            test_note_open_button.Location = new Point(330, 59);
-            test_note_open_button.Name = "test_note_open_button";
-            test_note_open_button.Size = new Size(53, 49);
-            test_note_open_button.TabIndex = 1;
-            test_note_open_button.UseVisualStyleBackColor = true;
-            test_note_open_button.Click += open_note_click;
+            add_note_button.Cursor = Cursors.Hand;
+            add_note_button.Location = new Point(355, 417);
+            add_note_button.Name = "add_note_button";
+            add_note_button.Size = new Size(50, 50);
+            add_note_button.TabIndex = 4;
+            add_note_button.UseVisualStyleBackColor = true;
+            add_note_button.Click += create_note_button_click;
             // 
-            // test_note_name
+            // info_button
             // 
-            test_note_name.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            test_note_name.AutoSize = true;
-            test_note_name.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            test_note_name.Location = new Point(101, 55);
-            test_note_name.Name = "test_note_name";
-            test_note_name.Size = new Size(220, 50);
-            test_note_name.TabIndex = 0;
-            test_note_name.Text = "<note title>";
+            info_button.Cursor = Cursors.Hand;
+            info_button.Location = new Point(3, 464);
+            info_button.Name = "info_button";
+            info_button.Size = new Size(30, 30);
+            info_button.TabIndex = 3;
+            info_button.UseVisualStyleBackColor = true;
+            info_button.Click += about_button_click;
+            // 
+            // open_folder_button
+            // 
+            open_folder_button.Cursor = Cursors.Hand;
+            open_folder_button.Location = new Point(50, 15);
+            open_folder_button.Name = "open_folder_button";
+            open_folder_button.Size = new Size(30, 30);
+            open_folder_button.TabIndex = 2;
+            open_folder_button.UseVisualStyleBackColor = true;
+            open_folder_button.Click += open_folder_button_Click;
+            // 
+            // settings_button
+            // 
+            settings_button.Cursor = Cursors.Hand;
+            settings_button.Location = new Point(15, 15);
+            settings_button.Name = "settings_button";
+            settings_button.Size = new Size(30, 30);
+            settings_button.TabIndex = 1;
+            settings_button.UseVisualStyleBackColor = true;
+            settings_button.Click += settings_button_click;
+            // 
+            // notes_buttons_list
+            // 
+            notes_buttons_list.AutoScroll = true;
+            notes_buttons_list.Location = new Point(50, 60);
+            notes_buttons_list.Name = "notes_buttons_list";
+            notes_buttons_list.Size = new Size(660, 340);
+            notes_buttons_list.TabIndex = 0;
             // 
             // current_note_panel
             // 
             current_note_panel.Controls.Add(current_note_text);
             current_note_panel.Controls.Add(current_note_title);
             current_note_panel.Controls.Add(close_current_note_button);
-            current_note_panel.Location = new Point(12, 12);
+            current_note_panel.Location = new Point(10, 10);
             current_note_panel.Name = "current_note_panel";
-            current_note_panel.Size = new Size(776, 426);
+            current_note_panel.Size = new Size(762, 499);
             current_note_panel.TabIndex = 2;
             // 
             // current_note_text
@@ -109,20 +141,21 @@
             close_current_note_button.TabIndex = 0;
             close_current_note_button.Text = "<-----";
             close_current_note_button.UseVisualStyleBackColor = true;
-            close_current_note_button.Click += close_note_click;
+            close_current_note_button.Click += close_note_button_click;
             // 
-            // Form1
+            // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(780, 517);
             Controls.Add(notes_list_panel);
             Controls.Add(current_note_panel);
-            Name = "Form1";
-            Text = "Form1";
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Secure Notes";
             Load += Form1_Load;
             notes_list_panel.ResumeLayout(false);
-            notes_list_panel.PerformLayout();
             current_note_panel.ResumeLayout(false);
             current_note_panel.PerformLayout();
             ResumeLayout(false);
@@ -131,11 +164,14 @@
         #endregion
 
         private Panel notes_list_panel;
-        private Label test_note_name;
-        private Button test_note_open_button;
         private Panel current_note_panel;
         private Button close_current_note_button;
         private TextBox current_note_title;
         private RichTextBox current_note_text;
+        private FlowLayoutPanel notes_buttons_list;
+        private Button settings_button;
+        private Button open_folder_button;
+        private Button info_button;
+        private Button add_note_button;
     }
 }
