@@ -27,23 +27,33 @@ namespace SecureNotesApp
         }
 
         // функция открытия заметки
-        public void open_note(string fileName, string notePassword = "") // временное стандартное значение пароля
+        public void open_note(string fileName)
         {
-            notes_list_panel.Visible = false;
-            current_note_panel.Visible = true;
             current_note_text.Text = Program.read_file(fileName);
             current_note_title.Text = fileName;
+            cached_title = fileName;
+
+            notes_list_panel.Visible = false;
+            current_note_panel.Visible = true;
+        }
+
+        // Сохранение нового текста заметки
+        private void save_note()
+        {
+            string fileName = current_note_title.Text;
+            string contents = current_note_text.Text;
+            Program.update_file_contents(fileName, contents);
         }
 
 
-        // нажатие на кнопку создания новой заметки
+        // Нажатие на кнопку создания новой заметки
         private void create_note_button_click(Object sender, EventArgs e)
         {
             CreateNoteForm create_new_note_dialog = new CreateNoteForm(this);
             create_new_note_dialog.ShowDialog();
         }
 
-        // нажатие на кнопку настроек
+        // Нажатие на кнопку настроек
         private void settings_button_click(Object sender, EventArgs e)
         {
             SettingsForm settigs_dialog = new SettingsForm(this);
@@ -56,36 +66,64 @@ namespace SecureNotesApp
             settigs_dialog.ShowDialog();
         }
 
-        // нажатие на кнопку директории
+        // Нажатие на кнопку директории
         private void open_folder_button_Click(object sender, EventArgs e)
         {
             Program.open_notes_location();
         }
 
 
-        // нажатие на заметку из списка
+        // Нажатие на заметку из списка
         private void open_note_button_click(object sender, EventArgs e)
         {
             string fileName = (sender as Button).Text;
             open_note(fileName); // вызов функции открытия заметки
         }
 
-        
+
         // Панель редактирования заметки
 
-        // нажатие на кнопку "назад"
+        // Нажатие на кнопку "назад"
         private void close_note_button_click(object sender, EventArgs e)
         {
+            save_note();
+
             notes_list_panel.Visible = true;
             current_note_panel.Visible = false;
+
+            cached_title = "";
+            current_note_title.Text = "";
             current_note_text.Text = "";
         }
 
-        // первая загрузка формы
-        private void Form1_Load(object sender, EventArgs e)
+        // Изменение заголовка заметки
+        private void current_note_title_TextChanged(object sender, EventArgs e)
+        {
+            string newFileName = current_note_title.Text;
+            Program.update_file_name(cached_title, newFileName);
+            cached_title = newFileName;
+        }
+
+
+        // Форма
+
+        // Первая загрузка формы
+        private void MainForm_Load(object sender, EventArgs e)
         {
             update_notes_list();
             current_note_panel.Visible = false;
         }
+        
+        // Закрытие формы
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (current_note_panel.Visible)
+            {
+                save_note();
+            }
+        }
+
+
+        private string cached_title;
     }
 }

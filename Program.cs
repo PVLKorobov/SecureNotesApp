@@ -1,3 +1,4 @@
+using Microsoft.VisualBasic;
 using System.Diagnostics;
 
 namespace SecureNotesApp
@@ -20,11 +21,12 @@ namespace SecureNotesApp
         }
 
 
+        // Считывание файла
         public static string read_file(string fileName)
         {
             string contents = "";
 
-            string filePath = $"{NOTES_LOCATION}\\{fileName}.{NOTE_FILE_EXTENTION}";
+            string filePath = $@"{NOTES_LOCATION}\{fileName}.{NOTE_FILE_EXTENTION}";
             if (File.Exists(filePath))
             {
                 contents = File.ReadAllText(filePath);
@@ -33,13 +35,35 @@ namespace SecureNotesApp
             return contents;
         }
 
-        public static void create_note_file(string fileName, string password = "") // временное стандартное значение пароля
+        // Замена текста файла
+        public static void update_file_contents(string fileName, string newContents)
+        {
+            string filePath = $@"{NOTES_LOCATION}\{fileName}.{NOTE_FILE_EXTENTION}";
+            if (File.Exists(filePath))
+            {
+                File.WriteAllText(filePath, newContents);
+            }
+        }
+
+        // Замена имени файла
+        public static void update_file_name(string oldFileName, string newFileName)
+        {
+            string filePath = $@"{NOTES_LOCATION}\{oldFileName}.{NOTE_FILE_EXTENTION}";
+            if (File.Exists(filePath))
+            {
+                Microsoft.VisualBasic.FileIO.FileSystem.RenameFile(filePath, $"{newFileName}.{NOTE_FILE_EXTENTION}");
+            }
+        }
+
+        // Создание нового файла
+        public static void create_note_file(string fileName)
         {
             string filePath = $"{NOTES_LOCATION}\\{fileName}.{NOTE_FILE_EXTENTION}";
             using (File.Create(filePath)) { };
         }
 
 
+        // Получение списка имён файлов
         public static List<string> get_notes_filenames()
         {
             List<string> notesFilenames = new List<string>();
@@ -53,6 +77,7 @@ namespace SecureNotesApp
             return notesFilenames;
         }
 
+        // Открытие папки с заметками в проводнике
         public static void open_notes_location()
         {
             System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
@@ -64,7 +89,7 @@ namespace SecureNotesApp
         }
 
 
-        private static readonly string NOTES_LOCATION = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\SecureNotesApp_test";
+        private static readonly string NOTES_LOCATION = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\SecureNotesApp_test";
         private static readonly string NOTE_FILE_EXTENTION = "txt";
     }
 }
