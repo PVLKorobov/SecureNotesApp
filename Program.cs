@@ -36,12 +36,12 @@ namespace SecureNotesApp
         }
 
         // Замена текста файла
-        public static void update_file_contents(string fileName, string newContent)
+        public static void update_file_contents(string fileName, string newContents)
         {
             string filePath = $@"{NOTES_LOCATION}\{fileName}.{NOTE_FILE_EXTENTION}";
             if (File.Exists(filePath))
             {
-                File.WriteAllText(filePath, newContent);
+                File.WriteAllText(filePath, newContents);
             }
         }
 

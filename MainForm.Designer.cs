@@ -116,9 +116,9 @@
             // 
             current_note_text.Cursor = Cursors.IBeam;
             current_note_text.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            current_note_text.Location = new Point(74, 59);
+            current_note_text.Location = new Point(50, 59);
             current_note_text.Name = "current_note_text";
-            current_note_text.Size = new Size(630, 343);
+            current_note_text.Size = new Size(708, 435);
             current_note_text.TabIndex = 2;
             current_note_text.Text = "";
             // 
@@ -126,18 +126,19 @@
             // 
             current_note_title.Cursor = Cursors.IBeam;
             current_note_title.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            current_note_title.Location = new Point(344, 24);
+            current_note_title.Location = new Point(128, 24);
             current_note_title.Name = "current_note_title";
-            current_note_title.Size = new Size(91, 29);
+            current_note_title.Size = new Size(630, 29);
             current_note_title.TabIndex = 1;
             current_note_title.Text = "<note title>";
+            current_note_title.TextChanged += current_note_title_TextChanged;
             // 
             // close_current_note_button
             // 
             close_current_note_button.Cursor = Cursors.Hand;
             close_current_note_button.Location = new Point(3, 3);
             close_current_note_button.Name = "close_current_note_button";
-            close_current_note_button.Size = new Size(75, 23);
+            close_current_note_button.Size = new Size(50, 30);
             close_current_note_button.TabIndex = 0;
             close_current_note_button.Text = "<-----";
             close_current_note_button.UseVisualStyleBackColor = true;
@@ -148,13 +149,14 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(780, 517);
-            Controls.Add(notes_list_panel);
             Controls.Add(current_note_panel);
+            Controls.Add(notes_list_panel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Secure Notes";
-            Load += Form1_Load;
+            FormClosing += MainForm_FormClosing;
+            Load += MainForm_Load;
             notes_list_panel.ResumeLayout(false);
             current_note_panel.ResumeLayout(false);
             current_note_panel.PerformLayout();
