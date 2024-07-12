@@ -27,7 +27,7 @@ namespace SecureNotesApp
         }
 
         // функция открытия заметки
-        public void open_note(string fileName, string notePassword = "") // временное стандартное значение пароля
+        public void open_note(string fileName)
         {
             notes_list_panel.Visible = false;
             current_note_panel.Visible = true;
