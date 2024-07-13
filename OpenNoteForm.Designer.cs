@@ -36,13 +36,13 @@
             // 
             // note_title_label
             // 
-            note_title_label.AutoSize = true;
             note_title_label.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            note_title_label.Location = new Point(108, 10);
+            note_title_label.Location = new Point(58, 10);
             note_title_label.Name = "note_title_label";
-            note_title_label.Size = new Size(184, 37);
+            note_title_label.Size = new Size(268, 37);
             note_title_label.TabIndex = 0;
             note_title_label.Text = "<note_name>";
+            note_title_label.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // note_password_textbox
             // 
@@ -50,7 +50,7 @@
             note_password_textbox.Location = new Point(160, 70);
             note_password_textbox.Name = "note_password_textbox";
             note_password_textbox.Size = new Size(166, 29);
-            note_password_textbox.TabIndex = 1;
+            note_password_textbox.TabIndex = 0;
             // 
             // password_label
             // 
@@ -68,12 +68,12 @@
             confirm_password_button.Location = new Point(140, 120);
             confirm_password_button.Name = "confirm_password_button";
             confirm_password_button.Size = new Size(120, 40);
-            confirm_password_button.TabIndex = 3;
+            confirm_password_button.TabIndex = 1;
             confirm_password_button.Text = "Открыть";
             confirm_password_button.UseVisualStyleBackColor = true;
             confirm_password_button.Click += confirm_password_button_click;
             // 
-            // NotePasswordForm
+            // OpenNoteForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -83,7 +83,8 @@
             Controls.Add(note_password_textbox);
             Controls.Add(note_title_label);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Name = "NotePasswordForm";
+            Name = "OpenNoteForm";
+            StartPosition = FormStartPosition.CenterParent;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -43,7 +43,7 @@
             confirm_button.Location = new Point(140, 200);
             confirm_button.Name = "confirm_button";
             confirm_button.Size = new Size(120, 40);
-            confirm_button.TabIndex = 0;
+            confirm_button.TabIndex = 2;
             confirm_button.Text = "Создать";
             confirm_button.UseVisualStyleBackColor = true;
             confirm_button.Click += confirm_button_click;
@@ -55,7 +55,7 @@
             note_title_textbox.Location = new Point(140, 81);
             note_title_textbox.Name = "note_title_textbox";
             note_title_textbox.Size = new Size(180, 29);
-            note_title_textbox.TabIndex = 1;
+            note_title_textbox.TabIndex = 0;
             // 
             // note_password_textbox
             // 
@@ -64,7 +64,7 @@
             note_password_textbox.Location = new Point(140, 123);
             note_password_textbox.Name = "note_password_textbox";
             note_password_textbox.Size = new Size(180, 29);
-            note_password_textbox.TabIndex = 2;
+            note_password_textbox.TabIndex = 1;
             // 
             // new_note_label
             // 
