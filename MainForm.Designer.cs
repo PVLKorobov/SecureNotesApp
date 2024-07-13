@@ -60,7 +60,7 @@
             add_note_button.Location = new Point(355, 417);
             add_note_button.Name = "add_note_button";
             add_note_button.Size = new Size(50, 50);
-            add_note_button.TabIndex = 4;
+            add_note_button.TabIndex = 0;
             add_note_button.UseVisualStyleBackColor = true;
             add_note_button.Click += create_note_button_click;
             // 
@@ -70,7 +70,7 @@
             info_button.Location = new Point(3, 464);
             info_button.Name = "info_button";
             info_button.Size = new Size(30, 30);
-            info_button.TabIndex = 3;
+            info_button.TabIndex = 5;
             info_button.UseVisualStyleBackColor = true;
             info_button.Click += about_button_click;
             // 
@@ -80,7 +80,7 @@
             open_folder_button.Location = new Point(50, 15);
             open_folder_button.Name = "open_folder_button";
             open_folder_button.Size = new Size(30, 30);
-            open_folder_button.TabIndex = 2;
+            open_folder_button.TabIndex = 4;
             open_folder_button.UseVisualStyleBackColor = true;
             open_folder_button.Click += open_folder_button_Click;
             // 
@@ -90,7 +90,7 @@
             settings_button.Location = new Point(15, 15);
             settings_button.Name = "settings_button";
             settings_button.Size = new Size(30, 30);
-            settings_button.TabIndex = 1;
+            settings_button.TabIndex = 3;
             settings_button.UseVisualStyleBackColor = true;
             settings_button.Click += settings_button_click;
             // 

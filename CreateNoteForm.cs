@@ -12,11 +12,6 @@ namespace SecureNotesApp
 {
     public partial class CreateNoteForm : Form
     {
-        public CreateNoteForm()
-        {
-            InitializeComponent();
-        }
-
         public CreateNoteForm(Form caller_form)
         {
             main_form = caller_form as MainForm;

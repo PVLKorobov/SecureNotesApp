@@ -67,6 +67,16 @@ namespace SecureNotesApp
             update_file_contents(fileName, encryptedContents); // записывание зашифрованного пароля в пустой файл
         }
 
+        // Удаление файла
+        public static void delete_note_file(string fileName)
+        {
+            string filePath = $@"{NOTES_LOCATION}\{fileName}.{NOTE_FILE_EXTENTION}";
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+        }
+
 
         // Получение списка имён файлов
         public static List<string> get_notes_filenames()

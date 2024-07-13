@@ -7,7 +7,7 @@ namespace SecureNotesApp
             InitializeComponent();
         }
 
-        // заполнение списка заметок
+        // Заполнение списка заметок
         public void update_notes_list()
         {
             notes_buttons_list.Controls.Clear();
@@ -23,13 +23,16 @@ namespace SecureNotesApp
                 note_open_button.Dock = DockStyle.Fill;
                 note_open_button.Click += open_note_button_click;
                 note_open_button.Cursor = Cursors.Hand;
+                note_open_button.TabIndex = 1;
 
+                note_delete_button.DataContext = filename;
                 note_delete_button.Height = 30;
                 note_delete_button.Width = 30;
                 note_delete_button.Left = 5;
                 note_delete_button.Top = 5;
                 note_delete_button.Click += delete_note_button_click;
                 note_delete_button.Cursor = Cursors.Hand;
+                note_delete_button.TabIndex = 2;
 
                 note_panel.Controls.Add(note_delete_button);
                 note_panel.Controls.Add(note_open_button);
@@ -40,7 +43,7 @@ namespace SecureNotesApp
             }
         }
 
-        // функция открытия заметки
+        // Функция открытия заметки
         public void open_note(string fileName, string password, out bool correct_password)
         {
             correct_password = false;
@@ -61,8 +64,7 @@ namespace SecureNotesApp
                 cached_title = fileName;
                 cached_password = password;
 
-                notes_list_panel.Visible = false;
-                current_note_panel.Visible = true;
+                switch_to_editor();
             }
         }
 
@@ -79,6 +81,25 @@ namespace SecureNotesApp
             //
             byte[] encryptedContents = AES.Encryption(cached_password, decryptedContents);
             Program.update_file_contents(fileName, encryptedContents);
+        }
+
+        // Переход в главное меню
+        public void switch_to_main()
+        {
+            notes_list_panel.Visible = true;
+            current_note_panel.Visible = false;
+
+            cached_title = "";
+            cached_password = "";
+            current_note_title.Text = "";
+            current_note_text.Text = "";
+        }
+
+        // Переход в редактор заметки
+        public void switch_to_editor()
+        {
+            notes_list_panel.Visible = false;
+            current_note_panel.Visible = true;
         }
 
 
@@ -120,7 +141,9 @@ namespace SecureNotesApp
         // Нажатие на кнопку удаления в списке
         private void delete_note_button_click(Object sender, EventArgs e)
         {
-            string fileName = (sender as Button).Text;
+            string fileName = (sender as Button).DataContext as string;
+            ConfirmDeleteForm confirmation_dialog = new ConfirmDeleteForm(this, fileName, false);
+            confirmation_dialog.ShowDialog();
         }
 
 
@@ -130,14 +153,15 @@ namespace SecureNotesApp
         private void close_note_button_click(object sender, EventArgs e)
         {
             save_note();
+            switch_to_main();
+        }
 
-            notes_list_panel.Visible = true;
-            current_note_panel.Visible = false;
-
-            cached_title = "";
-            cached_password = "";
-            current_note_title.Text = "";
-            current_note_text.Text = "";
+        // Нажатие на кнопку удаления в редакторе
+        private void editor_delete_note_button_click(Object sender, EventArgs e)
+        {
+            string fileName = current_note_title.Text;
+            ConfirmDeleteForm confirmation_dialog = new ConfirmDeleteForm(this, fileName, true);
+            confirmation_dialog.ShowDialog();
         }
 
         // Изменение заголовка заметки
