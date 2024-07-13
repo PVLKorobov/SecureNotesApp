@@ -62,8 +62,7 @@ namespace SecureNotesApp
         // Создание нового файла
         public static void create_note_file(string fileName, byte[] encryptedContents)
         {
-            string filePath = $"{NOTES_LOCATION}\\{fileName}.{NOTE_FILE_EXTENTION}";
-            
+            string filePath = $@"{NOTES_LOCATION}\{fileName}.{NOTE_FILE_EXTENTION}";
             using (File.Create(filePath)) { };
             update_file_contents(fileName, encryptedContents); // записывание зашифрованного пароля в пустой файл
         }
