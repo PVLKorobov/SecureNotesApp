@@ -27,22 +27,41 @@ namespace SecureNotesApp
         }
 
         // функция открытия заметки
-        public void open_note(string fileName)
+        public void open_note(string fileName, string password, out bool correct_password)
         {
-            current_note_text.Text = Program.read_file(fileName);
-            current_note_title.Text = fileName;
-            cached_title = fileName;
+            correct_password = false;
+            byte[] encrypted_contents = Program.read_file(fileName);
+            byte[] decrypted_contents = AES.Decryption(password, encrypted_contents, out correct_password);
 
-            notes_list_panel.Visible = false;
-            current_note_panel.Visible = true;
+            if (correct_password)
+            {
+                // Запись массива байтов в rich text box через memory stream
+                MemoryStream RTBInputStream = new MemoryStream();
+                RTBInputStream.Write(decrypted_contents);
+                RTBInputStream.Position = 0;
+                current_note_text.LoadFile(RTBInputStream, RichTextBoxStreamType.RichText);
+                //
+                current_note_title.Text = fileName;
+                cached_title = fileName;
+                cached_password = password;
+
+                notes_list_panel.Visible = false;
+                current_note_panel.Visible = true;
+            }
         }
 
         // Сохранение нового текста заметки
         private void save_note()
         {
             string fileName = current_note_title.Text;
-            string contents = current_note_text.Text;
-            Program.update_file_contents(fileName, contents);
+            // считывание текста rich text box в массив байтов через memory stream
+            MemoryStream RTBOutputStream = new MemoryStream();
+            current_note_text.SaveFile(RTBOutputStream, RichTextBoxStreamType.RichText);
+            RTBOutputStream.Position = 0;
+            byte[] decryptedContents = RTBOutputStream.ToArray();
+            //
+            byte[] encryptedContents = AES.Encryption(cached_password, decryptedContents);
+            Program.update_file_contents(fileName, encryptedContents);
         }
 
 
@@ -77,7 +96,8 @@ namespace SecureNotesApp
         private void open_note_button_click(object sender, EventArgs e)
         {
             string fileName = (sender as Button).Text;
-            open_note(fileName); // вызов функции открытия заметки
+            OpenNoteForm enter_password_dialog = new OpenNoteForm(this, fileName);
+            enter_password_dialog.ShowDialog();
         }
 
 
@@ -92,6 +112,7 @@ namespace SecureNotesApp
             current_note_panel.Visible = false;
 
             cached_title = "";
+            cached_password = "";
             current_note_title.Text = "";
             current_note_text.Text = "";
         }
@@ -124,6 +145,6 @@ namespace SecureNotesApp
         }
 
 
-        private string cached_title;
+        private string cached_title, cached_password;
     }
 }

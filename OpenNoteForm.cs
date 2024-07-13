@@ -10,37 +10,35 @@ using System.Windows.Forms;
 
 namespace SecureNotesApp
 {
-    public partial class CreateNoteForm : Form
+    public partial class OpenNoteForm : Form
     {
-        public CreateNoteForm()
+        public OpenNoteForm()
         {
             InitializeComponent();
         }
 
-        public CreateNoteForm(Form caller_form)
+        public OpenNoteForm(Form caller_form, string noteTitle)
         {
             main_form = caller_form as MainForm;
             InitializeComponent();
+
+            note_title_label.Text = noteTitle;
         }
 
 
-        // нажатие на кнопку "создать"
-        private void confirm_button_click(object sender, EventArgs e)
+        // нажатие на кнопку "открыть"
+        private void confirm_password_button_click(object sender, EventArgs e)
         {
-            if (note_title_textbox.Text != "")
+            if (note_password_textbox.Text != "")
             {
-                string fileName = note_title_textbox.Text;
+                string fileName = note_title_label.Text;
                 string password = note_password_textbox.Text;
-                byte[] decryptedContents = new byte[16];
-                byte[] encryptedContents = AES.Encryption(password, decryptedContents);
-                Program.create_note_file(fileName, encryptedContents);
-                bool correct_password;
+                bool correct_password = false;
                 main_form.open_note(fileName, password, out correct_password);
 
                 if (correct_password)
                 {
                     Close();
-                    main_form.update_notes_list();
                     Dispose();
                 }
             }

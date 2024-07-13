@@ -39,6 +39,7 @@
             // confirm_button
             // 
             confirm_button.Cursor = Cursors.Hand;
+            confirm_button.Font = new Font("Segoe UI", 12F);
             confirm_button.Location = new Point(140, 200);
             confirm_button.Name = "confirm_button";
             confirm_button.Size = new Size(120, 40);
@@ -50,17 +51,19 @@
             // note_title_textbox
             // 
             note_title_textbox.Cursor = Cursors.IBeam;
+            note_title_textbox.Font = new Font("Segoe UI", 12F);
             note_title_textbox.Location = new Point(140, 81);
             note_title_textbox.Name = "note_title_textbox";
-            note_title_textbox.Size = new Size(180, 23);
+            note_title_textbox.Size = new Size(180, 29);
             note_title_textbox.TabIndex = 1;
             // 
             // note_password_textbox
             // 
             note_password_textbox.Cursor = Cursors.IBeam;
+            note_password_textbox.Font = new Font("Segoe UI", 12F);
             note_password_textbox.Location = new Point(140, 123);
             note_password_textbox.Name = "note_password_textbox";
-            note_password_textbox.Size = new Size(180, 23);
+            note_password_textbox.Size = new Size(180, 29);
             note_password_textbox.TabIndex = 2;
             // 
             // new_note_label

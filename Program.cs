@@ -22,26 +22,26 @@ namespace SecureNotesApp
 
 
         // Считывание файла
-        public static string read_file(string fileName)
+        public static byte[] read_file(string fileName)
         {
-            string contents = "";
+            byte[] encryptedContents = { };
 
             string filePath = $@"{NOTES_LOCATION}\{fileName}.{NOTE_FILE_EXTENTION}";
             if (File.Exists(filePath))
             {
-                contents = File.ReadAllText(filePath);
+                encryptedContents = File.ReadAllBytes(filePath);
             }
 
-            return contents;
+            return encryptedContents;
         }
 
         // Замена текста файла
-        public static void update_file_contents(string fileName, string newContents)
+        public static void update_file_contents(string fileName, byte[] encryptedContents)
         {
             string filePath = $@"{NOTES_LOCATION}\{fileName}.{NOTE_FILE_EXTENTION}";
             if (File.Exists(filePath))
             {
-                File.WriteAllText(filePath, newContents);
+                File.WriteAllBytes(filePath, encryptedContents);
             }
         }
 
@@ -56,10 +56,11 @@ namespace SecureNotesApp
         }
 
         // Создание нового файла
-        public static void create_note_file(string fileName)
+        public static void create_note_file(string fileName, byte[] encryptedContents)
         {
             string filePath = $"{NOTES_LOCATION}\\{fileName}.{NOTE_FILE_EXTENTION}";
             using (File.Create(filePath)) { };
+            update_file_contents(filePath, encryptedContents); // записывание зашифрованного пароля в пустой файл
         }
 
 
