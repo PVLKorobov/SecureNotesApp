@@ -15,14 +15,28 @@ namespace SecureNotesApp
             List<string> notesFilenames = Program.get_notes_filenames();
             foreach (string filename in notesFilenames)
             {
-                Button note_button = new Button();
-                note_button.Text = filename;
-                note_button.Width = notes_buttons_list.Width - 25;
-                note_button.Height = 100;
-                note_button.Click += open_note_button_click;
-                note_button.Cursor = Cursors.Hand;
+                Panel note_panel = new Panel();
+                Button note_open_button = new Button();
+                Button note_delete_button = new Button();
 
-                notes_buttons_list.Controls.Add(note_button);
+                note_open_button.Text = filename;
+                note_open_button.Dock = DockStyle.Fill;
+                note_open_button.Click += open_note_button_click;
+                note_open_button.Cursor = Cursors.Hand;
+
+                note_delete_button.Height = 30;
+                note_delete_button.Width = 30;
+                note_delete_button.Left = 5;
+                note_delete_button.Top = 5;
+                note_delete_button.Click += delete_note_button_click;
+                note_delete_button.Cursor = Cursors.Hand;
+
+                note_panel.Controls.Add(note_delete_button);
+                note_panel.Controls.Add(note_open_button);
+                note_panel.Height = 100;
+                note_panel.Width = 654;
+
+                notes_buttons_list.Controls.Add(note_panel);
             }
         }
 
@@ -101,6 +115,12 @@ namespace SecureNotesApp
             string fileName = (sender as Button).Text;
             OpenNoteForm enter_password_dialog = new OpenNoteForm(this, fileName);
             enter_password_dialog.ShowDialog();
+        }
+
+        // Нажатие на кнопку удаления в списке
+        private void delete_note_button_click(Object sender, EventArgs e)
+        {
+            string fileName = (sender as Button).Text;
         }
 
 
