@@ -40,7 +40,8 @@ namespace SecureNotesApp
                 RTBInputStream.Write(decrypted_contents);
                 RTBInputStream.Position = 0;
 
-                current_note_text.LoadFile(RTBInputStream, RichTextBoxStreamType.RichText);
+                current_note_text.LoadFile(RTBInputStream, RichTextBoxStreamType.PlainText);
+                RTBInputStream.Close();
                 //
                 current_note_title.Text = fileName;
                 cached_title = fileName;
@@ -60,6 +61,7 @@ namespace SecureNotesApp
             current_note_text.SaveFile(RTBOutputStream, RichTextBoxStreamType.RichText);
             RTBOutputStream.Position = 0;
             byte[] decryptedContents = RTBOutputStream.ToArray();
+            RTBOutputStream.Close();
             //
             byte[] encryptedContents = AES.Encryption(cached_password, decryptedContents);
             Program.update_file_contents(fileName, encryptedContents);
