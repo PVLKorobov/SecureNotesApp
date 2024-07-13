@@ -32,7 +32,7 @@ namespace SecureNotesApp
                 string fileName = note_title_textbox.Text;
                 string password = note_password_textbox.Text;
                 string empty_temp = "{\\rtf1\\ansi\\deff0}";
-                byte[] decryptedContents = new byte[16];
+                byte[] decryptedContents = Encoding.ASCII.GetBytes(empty_temp);
                 byte[] encryptedContents = AES.Encryption(password, decryptedContents);
                 Program.create_note_file(fileName, encryptedContents);
                 bool correct_password;
