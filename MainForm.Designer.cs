@@ -99,7 +99,7 @@
             notes_buttons_list.AutoScroll = true;
             notes_buttons_list.Location = new Point(50, 60);
             notes_buttons_list.Name = "notes_buttons_list";
-            notes_buttons_list.Size = new Size(660, 340);
+            notes_buttons_list.Size = new Size(738, 340);
             notes_buttons_list.TabIndex = 0;
             // 
             // current_note_panel
