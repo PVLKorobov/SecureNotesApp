@@ -39,7 +39,8 @@ namespace SecureNotesApp
                 MemoryStream RTBInputStream = new MemoryStream();
                 RTBInputStream.Write(decrypted_contents);
                 RTBInputStream.Position = 0;
-                current_note_text.LoadFile(RTBInputStream, RichTextBoxStreamType.RichText);
+
+                current_note_text.LoadFile(RTBInputStream, RichTextBoxStreamType.PlainText);
                 //
                 current_note_title.Text = fileName;
                 cached_title = fileName;
