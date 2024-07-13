@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SecureNotesApp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
@@ -48,7 +49,7 @@ namespace SecureNotesApp
                     0x17, 0x2b, 0x04, 0x7e, 0xba, 0x77, 0xd6, 0x26, 0xe1, 0x69, 0x14, 0x63, 0x55, 0x21, 0x0c, 0x7d
                 };
 
-        
+
         static int Nk = 8, Nb = 4, Nr = 14;
 
 
@@ -58,7 +59,7 @@ namespace SecureNotesApp
                 throw new ArgumentNullException("input is empty");
 
             int seq_len = input.Length;
-            while (seq_len % 8 != 0) seq_len++;
+            while (seq_len % 16 != 0) seq_len++;
 
 
 
@@ -82,16 +83,16 @@ namespace SecureNotesApp
 
             inputText = NormalizeInput(inputText);
             KeyExpansion.Expansion(key, out K, out Keys);
-
-            byte[] input = new byte[inputText.Length+K.Length];
+            int input_len = inputText.Length + ((inputText.Length % maxKeyLength) == 0 ? 0 : (maxKeyLength - (inputText.Length % maxKeyLength)));
+            byte[] input = new byte[inputText.Length + K.Length];
             Array.Copy(inputText, 0, input, 0, inputText.Length);
             Array.Copy(K, 0, input, inputText.Length, K.Length);
 
             byte[] BlockIn = new byte[maxKeyLength];
             byte[] BlockOut;
-            byte[] Output = new byte[input.Length + ((input.Length % maxKeyLength) == 0 ? 0 :(maxKeyLength - (input.Length % maxKeyLength)))];
-            
-            
+            byte[] Output = new byte[input.Length];
+
+
             int tmp = input.Length / maxKeyLength;
             for (int i = 0; i < tmp; i++)
             {
@@ -221,9 +222,11 @@ namespace SecureNotesApp
             byte[] lastBytes = new byte[K.Length];
 
             Array.Copy(Output, 0, userOutput, 0, userOutput.Length);
-            Array.Copy(Output, userOutput.Length, lastBytes, 0, lastBytes.Length);
-
-
+            Array.Copy(Output, userOutput.Length, lastBytes, 0, K.Length);
+            /*
+                        Console.WriteLine(Encoding.ASCII.GetString(lastBytes));
+                        Console.WriteLine(Encoding.ASCII.GetString(K));
+            */
             decoded = Enumerable.SequenceEqual(K, lastBytes);
 
             return userOutput;

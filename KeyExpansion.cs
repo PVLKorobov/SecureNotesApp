@@ -54,9 +54,9 @@ namespace SecureNotesApp
         public static void Expansion(string key, out byte[] bKey, out byte[] bKeys)
         {
             key = NormalizeKey(key);
-            
 
-            bKey = new byte[key.Length * 8];
+
+            bKey = new byte[32];
             bKeys = new byte[8 * 4 * (Nr + 1)];
 
             Encoding.ASCII.GetBytes(key).CopyTo(bKey, 0);
