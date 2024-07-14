@@ -79,14 +79,17 @@ namespace SecureNotesApp
         // Замена имени файла
         public static void update_file_name(string oldFileName, string newFileName)
         {
-            string NOTE_FILE_EXTENTION = config.AppSettings.Settings["NOTE_FILE_EXTENTION"].Value;
-            string NOTES_LOCATION = config.AppSettings.Settings["NOTES_LOCATION"].Value;
-
-            string filePath = $@"{NOTES_LOCATION}\{oldFileName}.{NOTE_FILE_EXTENTION}";
-            
-            if (File.Exists(filePath))
+            if (newFileName != oldFileName)
             {
-                Microsoft.VisualBasic.FileIO.FileSystem.RenameFile(filePath, $"{newFileName}.{NOTE_FILE_EXTENTION}");
+                string NOTE_FILE_EXTENTION = config.AppSettings.Settings["NOTE_FILE_EXTENTION"].Value;
+                string NOTES_LOCATION = config.AppSettings.Settings["NOTES_LOCATION"].Value;
+
+                string filePath = $@"{NOTES_LOCATION}\{oldFileName}.{NOTE_FILE_EXTENTION}";
+
+                if (File.Exists(filePath))
+                {
+                    Microsoft.VisualBasic.FileIO.FileSystem.RenameFile(filePath, $"{newFileName}.{NOTE_FILE_EXTENTION}");
+                }
             }
         }
 

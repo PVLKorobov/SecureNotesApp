@@ -106,6 +106,12 @@ namespace SecureNotesApp
             notes_list_panel.Visible = false;
             current_note_panel.Visible = true;
             is_editor = true;
+
+            hide_panel(text_alignments_panel);
+            hide_panel(text_sizes_panel);
+            // DataContext показывает статус соответствующего списка
+            text_alignments_button.DataContext = false;
+            text_sizes_button.DataContext = false;
         }
 
 
@@ -153,7 +159,23 @@ namespace SecureNotesApp
         }
 
 
+        //
         // Панель редактирования заметки
+        //
+
+
+        // Функция отключения панели
+        private void hide_panel(Panel target)
+        {
+            target.Visible = false;
+        }
+
+        // Функция включения панели
+        private void show_panel(Panel target)
+        {
+            target.Visible = true;
+        }
+
 
         // Нажатие на кнопку "назад"
         private void close_note_button_click(object sender, EventArgs e)
@@ -213,7 +235,7 @@ namespace SecureNotesApp
         }
 
         // Нажатие на кнопку "зачёркивание"
-        private void SetStrikeout()
+        private void strikeout_button_click(object sender, EventArgs e)
         {
             string font_name = current_note_text.SelectionFont.Name;
             float font_size = current_note_text.SelectionFont.Size;
@@ -223,6 +245,24 @@ namespace SecureNotesApp
             else
                 current_note_text.SelectionFont = new Font(font_name, font_size, FontStyle.Strikeout);
         }
+
+
+        // Нажатие на кнопку списка кнопок выравнивания
+        private void alignments_list_button_click(object sender, EventArgs e)
+        {
+            bool listShown = (bool)text_alignments_button.DataContext;
+            if (listShown)
+            {
+                hide_panel(text_alignments_panel);
+                text_alignments_button.DataContext = false;
+            }
+            else
+            {
+                show_panel(text_alignments_panel);
+                text_alignments_button.DataContext = true;
+            }
+        }
+
 
         // Нажатие на кнопку "текст слева"
         private void align_left_button_click(object sender, EventArgs e)
@@ -240,6 +280,23 @@ namespace SecureNotesApp
         private void align_right_button_click(object sender, EventArgs e)
         {
             current_note_text.SelectionAlignment = HorizontalAlignment.Right;
+        }
+
+
+        // Нажатие на кнопку списка кнопок размера текста
+        private void sizes_list_button_click(object sender, EventArgs e)
+        {
+            bool listShown = (bool)text_sizes_button.DataContext;
+            if (listShown)
+            {
+                hide_panel(text_sizes_panel);
+                text_sizes_button.DataContext = false;
+            }
+            else
+            {
+                show_panel(text_sizes_panel);
+                text_sizes_button.DataContext = true;
+            }
         }
 
         // Нажатие на кнопку "размер текста - заголовок"
@@ -269,6 +326,7 @@ namespace SecureNotesApp
         {
             string newFileName = current_note_title.Text;
             Program.update_file_name(cached_title, newFileName);
+            update_notes_list();
             cached_title = newFileName;
         }
 
