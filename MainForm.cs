@@ -48,13 +48,13 @@ namespace SecureNotesApp
         }
 
         // Функция открытия заметки
-        public void open_note(string fileName, string password, out bool correct_password)
+        public void open_note(string fileName, string password, out bool isCorrectPassword)
         {
-            correct_password = false;
+            isCorrectPassword = false;
             byte[] encrypted_contents = Program.read_file(fileName);
-            byte[] decrypted_contents = AES.Decryption(password, encrypted_contents, out correct_password);
+            byte[] decrypted_contents = AES.Decryption(password, encrypted_contents, out isCorrectPassword);
 
-            if (correct_password)
+            if (isCorrectPassword)
             {
                 // Запись массива байтов в rich text box через memory stream
                 MemoryStream RTBInputStream = new MemoryStream();
@@ -168,6 +168,100 @@ namespace SecureNotesApp
             string fileName = current_note_title.Text;
             ConfirmDeleteForm confirmation_dialog = new ConfirmDeleteForm(this, fileName);
             confirmation_dialog.ShowDialog();
+        }
+
+        // Нажатие на кнопку сохранения
+        private void save_button_click(object sender, EventArgs e)
+        {
+            save_note();
+        }
+
+        // Нажатие на кнопку "жирный текст"
+        private void bold_button_click(object sender, EventArgs e)
+        {
+            string font_name = current_note_text.SelectionFont.Name;
+            float font_size = current_note_text.SelectionFont.Size;
+            bool isBold = current_note_text.SelectionFont.Bold;
+            if (isBold)
+                current_note_text.SelectionFont = new Font(font_name, font_size, FontStyle.Regular);
+            else
+                current_note_text.SelectionFont = new Font(font_name, font_size, FontStyle.Bold);
+        }
+
+        // Нажатие на кнопку "курсив"
+        private void italic_button_click(object sender, EventArgs e)
+        {
+            string font_name = current_note_text.SelectionFont.Name;
+            float font_size = current_note_text.SelectionFont.Size;
+            bool isItalic = current_note_text.SelectionFont.Italic;
+            if (isItalic)
+                current_note_text.SelectionFont = new Font(font_name, font_size, FontStyle.Regular);
+            else
+                current_note_text.SelectionFont = new Font(font_name, font_size, FontStyle.Italic);
+        }
+
+        // Нажатие на кнопку "подчёркивание"
+        private void underline_button_click(object sender, EventArgs e)
+        {
+            string font_name = current_note_text.SelectionFont.Name;
+            float font_size = current_note_text.SelectionFont.Size;
+            bool isUnderline = current_note_text.SelectionFont.Underline;
+            if (isUnderline)
+                current_note_text.SelectionFont = new Font(font_name, font_size, FontStyle.Regular);
+            else
+                current_note_text.SelectionFont = new Font(font_name, font_size, FontStyle.Underline);
+        }
+
+        // Нажатие на кнопку "зачёркивание"
+        private void SetStrikeout()
+        {
+            string font_name = current_note_text.SelectionFont.Name;
+            float font_size = current_note_text.SelectionFont.Size;
+            bool isStrikeout = current_note_text.SelectionFont.Strikeout;
+            if (isStrikeout)
+                current_note_text.SelectionFont = new Font(font_name, font_size, FontStyle.Regular);
+            else
+                current_note_text.SelectionFont = new Font(font_name, font_size, FontStyle.Strikeout);
+        }
+
+        // Нажатие на кнопку "текст слева"
+        private void align_left_button_click(object sender, EventArgs e)
+        {
+            current_note_text.SelectionAlignment = HorizontalAlignment.Left;
+        }
+
+        // Нажатие на кнопку "текст по центру"
+        private void align_center_button_click(object sender, EventArgs e)
+        {
+            current_note_text.SelectionAlignment = HorizontalAlignment.Center;
+        }
+
+        // Нажатие на кнопку "текст справа"
+        private void align_right_button_click(object sender, EventArgs e)
+        {
+            current_note_text.SelectionAlignment = HorizontalAlignment.Right;
+        }
+
+        // Нажатие на кнопку "размер текста - заголовок"
+        private void set_size_title_button_click(object sender, EventArgs e)
+        {
+            string font_name = current_note_text.SelectionFont.Name;
+            float font_size = current_note_text.SelectionFont.Size;
+            if (font_size == 20)
+                current_note_text.SelectionFont = new Font(font_name, 14);
+            else
+                current_note_text.SelectionFont = new Font(font_name, 20);
+        }
+
+        // Нажатие на кнопку "размер текста - подзаголовок"
+        private void set_size_subtitle_button_click(object sender, EventArgs e)
+        {
+            string font_name = current_note_text.SelectionFont.Name;
+            float font_size = current_note_text.SelectionFont.Size;
+            if (font_size == 16)
+                current_note_text.SelectionFont = new Font(font_name, 14);
+            else
+                current_note_text.SelectionFont = new Font(font_name, 16);
         }
 
         // Изменение заголовка заметки

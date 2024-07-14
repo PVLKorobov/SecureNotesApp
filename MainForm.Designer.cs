@@ -149,8 +149,8 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(780, 517);
-            Controls.Add(notes_list_panel);
             Controls.Add(current_note_panel);
+            Controls.Add(notes_list_panel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;

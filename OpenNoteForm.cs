@@ -59,10 +59,10 @@ namespace SecureNotesApp
             {
                 string fileName = note_title_label.Text;
                 string password = note_password_textbox.Text;
-                bool correct_password = false;
-                main_form.open_note(fileName, password, out correct_password);
+                bool isCorrectPassword = false;
+                main_form.open_note(fileName, password, out isCorrectPassword);
 
-                if (correct_password)
+                if (isCorrectPassword)
                 {
                     exit();
                 }
