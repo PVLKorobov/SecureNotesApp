@@ -50,6 +50,7 @@
             note_password_textbox.Location = new Point(100, 70);
             note_password_textbox.MaxLength = 32;
             note_password_textbox.Name = "note_password_textbox";
+            note_password_textbox.PasswordChar = '*';
             note_password_textbox.Size = new Size(261, 29);
             note_password_textbox.TabIndex = 0;
             note_password_textbox.Click += textbox_inFocus;
