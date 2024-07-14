@@ -59,5 +59,15 @@ namespace SecureNotesApp.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arrow_back_16dp_000000_FILL0_wght400_GRAD0_opsz20 {
+            get {
+                object obj = ResourceManager.GetObject("arrow_back_16dp_000000_FILL0_wght400_GRAD0_opsz20", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

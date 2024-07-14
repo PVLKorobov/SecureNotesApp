@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             notes_list_panel = new Panel();
             add_note_button = new Button();
             info_button = new Button();
@@ -136,13 +135,13 @@
             // 
             // close_current_note_button
             // 
-            close_current_note_button.BackgroundImage = (Image)resources.GetObject("close_current_note_button.BackgroundImage");
+            close_current_note_button.BackgroundImage = Properties.Resources.arrow_back_16dp_000000_FILL0_wght400_GRAD0_opsz20;
             close_current_note_button.BackgroundImageLayout = ImageLayout.Stretch;
             close_current_note_button.Cursor = Cursors.Hand;
             close_current_note_button.FlatStyle = FlatStyle.Flat;
             close_current_note_button.ForeColor = SystemColors.Control;
             close_current_note_button.Location = new Point(0, 0);
-            close_current_note_button.Margin = new Padding(0, 0, 0, 0);
+            close_current_note_button.Margin = new Padding(0);
             close_current_note_button.Name = "close_current_note_button";
             close_current_note_button.Size = new Size(42, 42);
             close_current_note_button.TabIndex = 0;
