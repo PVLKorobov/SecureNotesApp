@@ -30,18 +30,12 @@ namespace SecureNotesApp
         // Функция скрытия сообщения об ошибке
         private void hide_error(TextBox target)
         {
-            target.DataContext = false;
-            target.Text = "";
-            target.ForeColor = Color.Black;
-        }
-
-        // Чистка сообщения об ошибке
-        private void clear_error_message(TextBox target)
-        {
             bool displaying_error = (bool)target.DataContext;
             if (displaying_error)
             {
-                hide_error(target);
+                target.DataContext = false;
+                target.Text = "";
+                target.ForeColor = Color.Black;
             }
         }
 
@@ -56,8 +50,9 @@ namespace SecureNotesApp
         // Нажатие на кнопку "создать"
         private void confirm_button_click(object sender, EventArgs e)
         {
-            clear_error_message(note_password_textbox);
-            clear_error_message(note_title_textbox);
+            // Чистка сообщений об ошибке
+            hide_error(note_password_textbox);
+            hide_error(note_title_textbox);
 
             if (note_title_textbox.Text != "" && note_password_textbox.Text != "")
             {
@@ -97,11 +92,7 @@ namespace SecureNotesApp
         private void textbox_inFocus(object sender, EventArgs e)
         {
             TextBox target = sender as TextBox;
-            bool displaying_error = (bool)target.DataContext;
-            if (displaying_error)
-            {
-                hide_error(target);
-            }
+            hide_error(target);
         }
 
         // Нажатие на enter или escape
