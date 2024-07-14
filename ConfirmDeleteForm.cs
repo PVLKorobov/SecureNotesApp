@@ -12,9 +12,8 @@ namespace SecureNotesApp
 {
     public partial class ConfirmDeleteForm : Form
     {
-        public ConfirmDeleteForm(MainForm caller_form, string fileName, bool is_editor)
+        public ConfirmDeleteForm(MainForm caller_form, string fileName)
         {
-            this.is_editor = is_editor;
             main_form = caller_form;
             cached_file_name = fileName;
             InitializeComponent();
@@ -30,7 +29,7 @@ namespace SecureNotesApp
         
         private void yes_button_click(object sender, EventArgs e)
         {
-            if (is_editor)
+            if (main_form.is_editor)
             {
                 main_form.switch_to_main();
             }

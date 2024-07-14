@@ -5,6 +5,10 @@ namespace SecureNotesApp
         public MainForm()
         {
             InitializeComponent();
+
+            is_editor = false;
+            cached_password = "";
+            cached_title = "";
         }
 
         // Заполнение списка заметок
@@ -88,6 +92,7 @@ namespace SecureNotesApp
         {
             notes_list_panel.Visible = true;
             current_note_panel.Visible = false;
+            is_editor = false;
 
             cached_title = "";
             cached_password = "";
@@ -100,6 +105,7 @@ namespace SecureNotesApp
         {
             notes_list_panel.Visible = false;
             current_note_panel.Visible = true;
+            is_editor = true;
         }
 
 
@@ -142,7 +148,7 @@ namespace SecureNotesApp
         private void delete_note_button_click(Object sender, EventArgs e)
         {
             string fileName = (sender as Button).DataContext as string;
-            ConfirmDeleteForm confirmation_dialog = new ConfirmDeleteForm(this, fileName, false);
+            ConfirmDeleteForm confirmation_dialog = new ConfirmDeleteForm(this, fileName);
             confirmation_dialog.ShowDialog();
         }
 
@@ -160,7 +166,7 @@ namespace SecureNotesApp
         private void editor_delete_note_button_click(Object sender, EventArgs e)
         {
             string fileName = current_note_title.Text;
-            ConfirmDeleteForm confirmation_dialog = new ConfirmDeleteForm(this, fileName, true);
+            ConfirmDeleteForm confirmation_dialog = new ConfirmDeleteForm(this, fileName);
             confirmation_dialog.ShowDialog();
         }
 
@@ -192,6 +198,7 @@ namespace SecureNotesApp
         }
 
 
+        public bool is_editor;
         private string cached_title, cached_password;
     }
 }
