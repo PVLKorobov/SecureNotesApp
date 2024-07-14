@@ -22,6 +22,7 @@ namespace SecureNotesApp
         // Функция вывода сообщения об ошибке
         private void display_error(TextBox target, string message)
         {
+            if (target.Name == "note_password_textbox") { target.PasswordChar = '\0'; }
             target.DataContext = true;
             target.Text = message;
             target.ForeColor = Color.Red;
@@ -33,6 +34,7 @@ namespace SecureNotesApp
             bool displaying_error = (bool)target.DataContext;
             if (displaying_error)
             {
+                if (target.Name == "note_password_textbox") { target.PasswordChar = '*'; }
                 target.DataContext = false;
                 target.Text = "";
                 target.ForeColor = Color.Black;
