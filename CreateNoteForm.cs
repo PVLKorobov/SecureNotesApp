@@ -19,10 +19,47 @@ namespace SecureNotesApp
         }
 
 
-        // нажатие на кнопку "создать"
+        // Функция вывода сообщения об ошибке
+        private void display_error(TextBox target, string message)
+        {
+            target.DataContext = true;
+            target.Text = message;
+            target.ForeColor = Color.Red;
+        }
+
+        // Функция скрытия сообщения об ошибке
+        private void hide_error(TextBox target)
+        {
+            target.DataContext = false;
+            target.Text = "";
+            target.ForeColor = Color.Black;
+        }
+
+        // Чистка сообщения об ошибке
+        private void clear_error_message(TextBox target)
+        {
+            bool displaying_error = (bool)target.DataContext;
+            if (displaying_error)
+            {
+                hide_error(target);
+            }
+        }
+
+        // Фукнция закрытия
+        private void exit()
+        {
+            Close();
+            Dispose();
+        }
+
+
+        // Нажатие на кнопку "создать"
         private void confirm_button_click(object sender, EventArgs e)
         {
-            if (note_title_textbox.Text != "")
+            clear_error_message(note_password_textbox);
+            clear_error_message(note_title_textbox);
+
+            if (note_title_textbox.Text != "" && note_password_textbox.Text != "")
             {
                 string fileName = note_title_textbox.Text;
                 string password = note_password_textbox.Text;
@@ -35,11 +72,58 @@ namespace SecureNotesApp
 
                 if (correct_password)
                 {
-                    Close();
                     main_form.update_notes_list();
-                    Dispose();
+                    exit();
+                }
+                else
+                {
+                    display_error(note_password_textbox, "Неверный пароль");
                 }
             }
+            else
+            {
+                if (note_title_textbox.Text == "") 
+                {
+                    display_error(note_title_textbox, "Поле не может быть пустым");
+                }
+                if (note_password_textbox.Text == "")
+                {
+                    display_error(note_password_textbox, "Поле не может быть пустым");
+                }
+            }
+        }
+
+        // Переключение или нажатие на поле ввода пароля
+        private void textbox_inFocus(object sender, EventArgs e)
+        {
+            TextBox target = sender as TextBox;
+            bool displaying_error = (bool)target.DataContext;
+            if (displaying_error)
+            {
+                hide_error(target);
+            }
+        }
+
+        // Нажатие на enter или escape
+        private void textbox_keyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                confirm_button_click(this, EventArgs.Empty);
+            }
+            else if (e.KeyChar == (char)Keys.Escape)
+            {
+                exit();
+            }
+        }
+
+        
+        // Загрузка формы
+        private void CreateNoteForm_Load(object sender, EventArgs e)
+        {
+            // DataContext показывает отображается ли ошибка
+            note_title_textbox.DataContext = false;
+            note_password_textbox.DataContext = false;
         }
 
 

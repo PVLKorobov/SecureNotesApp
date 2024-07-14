@@ -32,7 +32,6 @@
             note_password_textbox = new TextBox();
             password_label = new Label();
             confirm_password_button = new Button();
-            error_message = new Label();
             SuspendLayout();
             // 
             // note_title_label
@@ -48,18 +47,20 @@
             // note_password_textbox
             // 
             note_password_textbox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            note_password_textbox.Location = new Point(160, 70);
+            note_password_textbox.Location = new Point(100, 70);
             note_password_textbox.MaxLength = 32;
             note_password_textbox.Name = "note_password_textbox";
-            note_password_textbox.Size = new Size(166, 29);
+            note_password_textbox.Size = new Size(261, 29);
             note_password_textbox.TabIndex = 0;
-            note_password_textbox.Enter += password_textbox_in_focus;
+            note_password_textbox.Click += textbox_inFocus;
+            note_password_textbox.Enter += textbox_inFocus;
+            note_password_textbox.KeyPress += textbox_keyPress;
             // 
             // password_label
             // 
             password_label.AutoSize = true;
             password_label.Font = new Font("Segoe UI", 14F);
-            password_label.Location = new Point(58, 70);
+            password_label.Location = new Point(12, 70);
             password_label.Name = "password_label";
             password_label.Size = new Size(82, 25);
             password_label.TabIndex = 2;
@@ -74,18 +75,7 @@
             confirm_password_button.TabIndex = 1;
             confirm_password_button.Text = "Открыть";
             confirm_password_button.UseVisualStyleBackColor = true;
-            confirm_password_button.Click += confirm_password_button_click;
-            // 
-            // error_message
-            // 
-            error_message.BackColor = Color.Transparent;
-            error_message.Font = new Font("Segoe UI", 12F);
-            error_message.ForeColor = Color.Red;
-            error_message.Location = new Point(160, 70);
-            error_message.Name = "error_message";
-            error_message.Size = new Size(166, 29);
-            error_message.TabIndex = 3;
-            error_message.Visible = false;
+            confirm_password_button.Click += confirm_button_click;
             // 
             // OpenNoteForm
             // 
@@ -96,10 +86,10 @@
             Controls.Add(password_label);
             Controls.Add(note_title_label);
             Controls.Add(note_password_textbox);
-            Controls.Add(error_message);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "OpenNoteForm";
             StartPosition = FormStartPosition.CenterParent;
+            Load += OpenNoteForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -110,6 +100,5 @@
         private TextBox note_password_textbox;
         private Label password_label;
         private Button confirm_password_button;
-        private Label error_message;
     }
 }

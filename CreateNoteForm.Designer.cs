@@ -52,20 +52,24 @@
             // 
             note_title_textbox.Cursor = Cursors.IBeam;
             note_title_textbox.Font = new Font("Segoe UI", 12F);
-            note_title_textbox.Location = new Point(140, 81);
+            note_title_textbox.Location = new Point(117, 81);
             note_title_textbox.Name = "note_title_textbox";
-            note_title_textbox.Size = new Size(180, 29);
+            note_title_textbox.Size = new Size(255, 29);
             note_title_textbox.TabIndex = 0;
+            note_title_textbox.Click += textbox_inFocus;
+            note_title_textbox.Enter += textbox_inFocus;
             // 
             // note_password_textbox
             // 
             note_password_textbox.Cursor = Cursors.IBeam;
             note_password_textbox.Font = new Font("Segoe UI", 12F);
-            note_password_textbox.Location = new Point(140, 123);
+            note_password_textbox.Location = new Point(117, 123);
             note_password_textbox.MaxLength = 32;
             note_password_textbox.Name = "note_password_textbox";
-            note_password_textbox.Size = new Size(180, 29);
+            note_password_textbox.Size = new Size(255, 29);
             note_password_textbox.TabIndex = 1;
+            note_password_textbox.Click += textbox_inFocus;
+            note_password_textbox.Enter += textbox_inFocus;
             // 
             // new_note_label
             // 
@@ -81,7 +85,7 @@
             // 
             name_label.AutoSize = true;
             name_label.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            name_label.Location = new Point(29, 78);
+            name_label.Location = new Point(12, 81);
             name_label.Name = "name_label";
             name_label.Size = new Size(99, 25);
             name_label.TabIndex = 4;
@@ -91,7 +95,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14F);
-            label2.Location = new Point(46, 118);
+            label2.Location = new Point(29, 123);
             label2.Name = "label2";
             label2.Size = new Size(82, 25);
             label2.TabIndex = 5;
@@ -115,6 +119,7 @@
             Name = "CreateNoteForm";
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterParent;
+            Load += CreateNoteForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
