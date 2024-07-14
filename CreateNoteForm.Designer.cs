@@ -62,6 +62,7 @@
             note_password_textbox.Cursor = Cursors.IBeam;
             note_password_textbox.Font = new Font("Segoe UI", 12F);
             note_password_textbox.Location = new Point(140, 123);
+            note_password_textbox.MaxLength = 32;
             note_password_textbox.Name = "note_password_textbox";
             note_password_textbox.Size = new Size(180, 29);
             note_password_textbox.TabIndex = 1;

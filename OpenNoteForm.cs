@@ -26,6 +26,13 @@ namespace SecureNotesApp
         }
 
 
+        private void display_error(string message)
+        {
+            error_message.Text = message;
+            error_message.Visible = true;
+        }
+
+
         // нажатие на кнопку "открыть"
         private void confirm_password_button_click(object sender, EventArgs e)
         {
@@ -41,7 +48,17 @@ namespace SecureNotesApp
                     Close();
                     Dispose();
                 }
+                else
+                {
+                    display_error("Неверный пароль");
+                }
             }
+        }
+
+        private void password_textbox_in_focus(object sender, EventArgs e)
+        {
+            error_message.Visible = false;
+            error_message.Text = "";
         }
 
 

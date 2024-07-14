@@ -32,6 +32,7 @@
             note_password_textbox = new TextBox();
             password_label = new Label();
             confirm_password_button = new Button();
+            error_message = new Label();
             SuspendLayout();
             // 
             // note_title_label
@@ -48,9 +49,11 @@
             // 
             note_password_textbox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
             note_password_textbox.Location = new Point(160, 70);
+            note_password_textbox.MaxLength = 32;
             note_password_textbox.Name = "note_password_textbox";
             note_password_textbox.Size = new Size(166, 29);
             note_password_textbox.TabIndex = 0;
+            note_password_textbox.Enter += password_textbox_in_focus;
             // 
             // password_label
             // 
@@ -73,6 +76,17 @@
             confirm_password_button.UseVisualStyleBackColor = true;
             confirm_password_button.Click += confirm_password_button_click;
             // 
+            // error_message
+            // 
+            error_message.BackColor = Color.Transparent;
+            error_message.Font = new Font("Segoe UI", 12F);
+            error_message.ForeColor = Color.Red;
+            error_message.Location = new Point(160, 70);
+            error_message.Name = "error_message";
+            error_message.Size = new Size(166, 29);
+            error_message.TabIndex = 3;
+            error_message.Visible = false;
+            // 
             // OpenNoteForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -80,8 +94,9 @@
             ClientSize = new Size(384, 181);
             Controls.Add(confirm_password_button);
             Controls.Add(password_label);
-            Controls.Add(note_password_textbox);
             Controls.Add(note_title_label);
+            Controls.Add(note_password_textbox);
+            Controls.Add(error_message);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "OpenNoteForm";
             StartPosition = FormStartPosition.CenterParent;
@@ -95,5 +110,6 @@
         private TextBox note_password_textbox;
         private Label password_label;
         private Button confirm_password_button;
+        private Label error_message;
     }
 }
