@@ -229,6 +229,8 @@ namespace SecureNotesApp
                 current_note_text.SelectionFont = new Font(font_name, font_size, FontStyle.Regular);
             else
                 current_note_text.SelectionFont = new Font(font_name, font_size, FontStyle.Bold);
+
+
         }
 
         // Нажатие на кнопку "курсив"

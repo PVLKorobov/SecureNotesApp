@@ -169,7 +169,10 @@
             // 
             // alignment_left_button
             // 
+            alignment_left_button.BackgroundImage = Properties.Resources.format_align_left;
+            alignment_left_button.BackgroundImageLayout = ImageLayout.Zoom;
             alignment_left_button.Cursor = Cursors.Hand;
+            alignment_left_button.FlatStyle = FlatStyle.Flat;
             alignment_left_button.Location = new Point(3, 3);
             alignment_left_button.Name = "alignment_left_button";
             alignment_left_button.Size = new Size(30, 30);
@@ -179,7 +182,10 @@
             // 
             // alignment_right_button
             // 
+            alignment_right_button.BackgroundImage = Properties.Resources.format_align_right;
+            alignment_right_button.BackgroundImageLayout = ImageLayout.Zoom;
             alignment_right_button.Cursor = Cursors.Hand;
+            alignment_right_button.FlatStyle = FlatStyle.Flat;
             alignment_right_button.Location = new Point(75, 3);
             alignment_right_button.Name = "alignment_right_button";
             alignment_right_button.Size = new Size(30, 30);
@@ -189,7 +195,10 @@
             // 
             // alignment_center_button
             // 
+            alignment_center_button.BackgroundImage = Properties.Resources.format_align_center;
+            alignment_center_button.BackgroundImageLayout = ImageLayout.Zoom;
             alignment_center_button.Cursor = Cursors.Hand;
+            alignment_center_button.FlatStyle = FlatStyle.Flat;
             alignment_center_button.Location = new Point(39, 3);
             alignment_center_button.Name = "alignment_center_button";
             alignment_center_button.Size = new Size(30, 30);
@@ -209,8 +218,13 @@
             // 
             // title_size_button
             // 
+            title_size_button.BackgroundImage = Properties.Resources.title;
+            title_size_button.BackgroundImageLayout = ImageLayout.Zoom;
             title_size_button.Cursor = Cursors.Hand;
+            title_size_button.FlatStyle = FlatStyle.Flat;
+            title_size_button.Font = new Font("Microsoft Sans Serif", 9.75F);
             title_size_button.Location = new Point(39, 3);
+            title_size_button.Margin = new Padding(0);
             title_size_button.Name = "title_size_button";
             title_size_button.Size = new Size(30, 30);
             title_size_button.TabIndex = 14;
@@ -220,10 +234,14 @@
             // subtitle_size_button
             // 
             subtitle_size_button.Cursor = Cursors.Hand;
+            subtitle_size_button.FlatStyle = FlatStyle.Flat;
+            subtitle_size_button.Font = new Font("Microsoft Sans Serif", 9.75F);
             subtitle_size_button.Location = new Point(3, 3);
+            subtitle_size_button.Margin = new Padding(0);
             subtitle_size_button.Name = "subtitle_size_button";
             subtitle_size_button.Size = new Size(30, 30);
             subtitle_size_button.TabIndex = 13;
+            subtitle_size_button.Text = "16";
             subtitle_size_button.UseVisualStyleBackColor = true;
             subtitle_size_button.Click += set_size_subtitle_button_click;
             // 
@@ -243,8 +261,12 @@
             // 
             // save_button
             // 
+            save_button.BackgroundImage = Properties.Resources.save;
+            save_button.BackgroundImageLayout = ImageLayout.Zoom;
             save_button.Cursor = Cursors.Hand;
+            save_button.FlatStyle = FlatStyle.Flat;
             save_button.Location = new Point(3, 3);
+            save_button.Margin = new Padding(0);
             save_button.Name = "save_button";
             save_button.Size = new Size(30, 30);
             save_button.TabIndex = 3;
@@ -253,7 +275,11 @@
             // 
             // text_sizes_button
             // 
+            text_sizes_button.BackgroundImage = Properties.Resources.format_size;
+            text_sizes_button.BackgroundImageLayout = ImageLayout.Zoom;
             text_sizes_button.Cursor = Cursors.Hand;
+            text_sizes_button.FlatStyle = FlatStyle.Flat;
+            text_sizes_button.Font = new Font("Microsoft Sans Serif", 9.75F);
             text_sizes_button.Location = new Point(3, 219);
             text_sizes_button.Name = "text_sizes_button";
             text_sizes_button.Size = new Size(30, 30);
@@ -263,8 +289,12 @@
             // 
             // bold_button
             // 
+            bold_button.BackgroundImage = Properties.Resources.format_bold;
+            bold_button.BackgroundImageLayout = ImageLayout.Zoom;
             bold_button.Cursor = Cursors.Hand;
+            bold_button.FlatStyle = FlatStyle.Flat;
             bold_button.Location = new Point(3, 39);
+            bold_button.Margin = new Padding(0);
             bold_button.Name = "bold_button";
             bold_button.Size = new Size(30, 30);
             bold_button.TabIndex = 4;
@@ -273,7 +303,10 @@
             // 
             // text_alignments_button
             // 
+            text_alignments_button.BackgroundImage = Properties.Resources.format_align_justify;
+            text_alignments_button.BackgroundImageLayout = ImageLayout.Zoom;
             text_alignments_button.Cursor = Cursors.Hand;
+            text_alignments_button.FlatStyle = FlatStyle.Flat;
             text_alignments_button.Location = new Point(3, 183);
             text_alignments_button.Name = "text_alignments_button";
             text_alignments_button.Size = new Size(30, 30);
@@ -283,7 +316,10 @@
             // 
             // italic_button
             // 
+            italic_button.BackgroundImage = Properties.Resources.format_italic;
+            italic_button.BackgroundImageLayout = ImageLayout.Zoom;
             italic_button.Cursor = Cursors.Hand;
+            italic_button.FlatStyle = FlatStyle.Flat;
             italic_button.Location = new Point(3, 75);
             italic_button.Name = "italic_button";
             italic_button.Size = new Size(30, 30);
@@ -293,7 +329,10 @@
             // 
             // strikeout_button
             // 
+            strikeout_button.BackgroundImage = Properties.Resources.format_strikethrough;
+            strikeout_button.BackgroundImageLayout = ImageLayout.Zoom;
             strikeout_button.Cursor = Cursors.Hand;
+            strikeout_button.FlatStyle = FlatStyle.Flat;
             strikeout_button.Location = new Point(3, 147);
             strikeout_button.Name = "strikeout_button";
             strikeout_button.Size = new Size(30, 30);
@@ -303,19 +342,27 @@
             // 
             // underline_button
             // 
+            underline_button.BackColor = SystemColors.Control;
+            underline_button.BackgroundImage = Properties.Resources.format_underlined;
+            underline_button.BackgroundImageLayout = ImageLayout.Zoom;
             underline_button.Cursor = Cursors.Hand;
+            underline_button.FlatAppearance.BorderColor = SystemColors.ControlDark;
+            underline_button.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
+            underline_button.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            underline_button.FlatStyle = FlatStyle.Flat;
             underline_button.Location = new Point(3, 111);
             underline_button.Name = "underline_button";
             underline_button.Size = new Size(30, 30);
             underline_button.TabIndex = 6;
-            underline_button.UseVisualStyleBackColor = true;
+            underline_button.UseVisualStyleBackColor = false;
             underline_button.Click += underline_button_click;
             // 
             // current_note_text
             // 
+            current_note_text.BorderStyle = BorderStyle.FixedSingle;
             current_note_text.Cursor = Cursors.IBeam;
             current_note_text.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            current_note_text.Location = new Point(50, 59);
+            current_note_text.Location = new Point(50, 60);
             current_note_text.Name = "current_note_text";
             current_note_text.Size = new Size(708, 435);
             current_note_text.TabIndex = 0;
@@ -361,8 +408,8 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(780, 517);
-            Controls.Add(notes_list_panel);
             Controls.Add(current_note_panel);
+            Controls.Add(notes_list_panel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = menuStrip1;
             Name = "MainForm";
