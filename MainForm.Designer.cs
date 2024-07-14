@@ -56,18 +56,29 @@
             // 
             // add_note_button
             // 
+            add_note_button.BackColor = SystemColors.Control;
+            add_note_button.BackgroundImage = Properties.Resources.add_circle_16dp_000000_FILL0_wght400_GRAD0_opsz20;
+            add_note_button.BackgroundImageLayout = ImageLayout.Zoom;
             add_note_button.Cursor = Cursors.Hand;
+            add_note_button.FlatStyle = FlatStyle.Flat;
+            add_note_button.ForeColor = SystemColors.Control;
             add_note_button.Location = new Point(355, 417);
+            add_note_button.Margin = new Padding(0);
             add_note_button.Name = "add_note_button";
             add_note_button.Size = new Size(50, 50);
             add_note_button.TabIndex = 0;
-            add_note_button.UseVisualStyleBackColor = true;
+            add_note_button.UseVisualStyleBackColor = false;
             add_note_button.Click += create_note_button_click;
             // 
             // info_button
             // 
+            info_button.BackgroundImage = Properties.Resources.info_16dp_000000_FILL0_wght400_GRAD0_opsz20;
+            info_button.BackgroundImageLayout = ImageLayout.Zoom;
             info_button.Cursor = Cursors.Hand;
-            info_button.Location = new Point(3, 464);
+            info_button.FlatStyle = FlatStyle.Flat;
+            info_button.ForeColor = SystemColors.Control;
+            info_button.Location = new Point(0, 468);
+            info_button.Margin = new Padding(0);
             info_button.Name = "info_button";
             info_button.Size = new Size(30, 30);
             info_button.TabIndex = 5;
@@ -76,20 +87,30 @@
             // 
             // open_folder_button
             // 
+            open_folder_button.BackgroundImage = Properties.Resources.folder_16dp_000000_FILL0_wght400_GRAD0_opsz20;
+            open_folder_button.BackgroundImageLayout = ImageLayout.Zoom;
             open_folder_button.Cursor = Cursors.Hand;
-            open_folder_button.Location = new Point(50, 15);
+            open_folder_button.FlatStyle = FlatStyle.Flat;
+            open_folder_button.ForeColor = SystemColors.Control;
+            open_folder_button.Location = new Point(0, 53);
+            open_folder_button.Margin = new Padding(0);
             open_folder_button.Name = "open_folder_button";
-            open_folder_button.Size = new Size(30, 30);
+            open_folder_button.Size = new Size(40, 40);
             open_folder_button.TabIndex = 4;
             open_folder_button.UseVisualStyleBackColor = true;
             open_folder_button.Click += open_folder_button_Click;
             // 
             // settings_button
             // 
+            settings_button.BackgroundImage = Properties.Resources.settings_16dp_000000_FILL0_wght400_GRAD0_opsz20;
+            settings_button.BackgroundImageLayout = ImageLayout.Zoom;
             settings_button.Cursor = Cursors.Hand;
-            settings_button.Location = new Point(15, 15);
+            settings_button.FlatStyle = FlatStyle.Flat;
+            settings_button.ForeColor = SystemColors.Control;
+            settings_button.Location = new Point(0, 13);
+            settings_button.Margin = new Padding(0);
             settings_button.Name = "settings_button";
-            settings_button.Size = new Size(30, 30);
+            settings_button.Size = new Size(40, 40);
             settings_button.TabIndex = 3;
             settings_button.UseVisualStyleBackColor = true;
             settings_button.Click += settings_button_click;
@@ -153,8 +174,8 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(780, 517);
-            Controls.Add(current_note_panel);
             Controls.Add(notes_list_panel);
+            Controls.Add(current_note_panel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
