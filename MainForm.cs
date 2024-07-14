@@ -230,7 +230,7 @@ namespace SecureNotesApp
             else
                 current_note_text.SelectionFont = new Font(font_name, font_size, FontStyle.Bold);
 
-
+            current_note_text.Focus();
         }
 
         // Нажатие на кнопку "курсив"
@@ -243,6 +243,8 @@ namespace SecureNotesApp
                 current_note_text.SelectionFont = new Font(font_name, font_size, FontStyle.Regular);
             else
                 current_note_text.SelectionFont = new Font(font_name, font_size, FontStyle.Italic);
+
+            current_note_text.Focus();
         }
 
         // Нажатие на кнопку "подчёркивание"
@@ -255,6 +257,8 @@ namespace SecureNotesApp
                 current_note_text.SelectionFont = new Font(font_name, font_size, FontStyle.Regular);
             else
                 current_note_text.SelectionFont = new Font(font_name, font_size, FontStyle.Underline);
+
+            current_note_text.Focus();
         }
 
         // Нажатие на кнопку "зачёркивание"
@@ -267,6 +271,8 @@ namespace SecureNotesApp
                 current_note_text.SelectionFont = new Font(font_name, font_size, FontStyle.Regular);
             else
                 current_note_text.SelectionFont = new Font(font_name, font_size, FontStyle.Strikeout);
+
+            current_note_text.Focus();
         }
 
 
@@ -291,18 +297,24 @@ namespace SecureNotesApp
         private void align_left_button_click(object sender, EventArgs e)
         {
             current_note_text.SelectionAlignment = HorizontalAlignment.Left;
+
+            current_note_text.Focus();
         }
 
         // Нажатие на кнопку "текст по центру"
         private void align_center_button_click(object sender, EventArgs e)
         {
             current_note_text.SelectionAlignment = HorizontalAlignment.Center;
+
+            current_note_text.Focus();
         }
 
         // Нажатие на кнопку "текст справа"
         private void align_right_button_click(object sender, EventArgs e)
         {
             current_note_text.SelectionAlignment = HorizontalAlignment.Right;
+
+            current_note_text.Focus();
         }
 
 
@@ -331,6 +343,8 @@ namespace SecureNotesApp
                 current_note_text.SelectionFont = new Font(font_name, 14);
             else
                 current_note_text.SelectionFont = new Font(font_name, 20);
+
+            current_note_text.Focus();
         }
 
         // Нажатие на кнопку "размер текста - подзаголовок"
@@ -342,6 +356,8 @@ namespace SecureNotesApp
                 current_note_text.SelectionFont = new Font(font_name, 14);
             else
                 current_note_text.SelectionFont = new Font(font_name, 16);
+
+            current_note_text.Focus();
         }
 
         // Изменение заголовка заметки
