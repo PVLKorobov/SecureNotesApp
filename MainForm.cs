@@ -28,6 +28,11 @@ namespace SecureNotesApp
                 note_open_button.Click += open_note_button_click;
                 note_open_button.Cursor = Cursors.Hand;
                 note_open_button.TabIndex = 1;
+/*                note_open_button.FlatStyle = FlatStyle.Flat;
+                note_open_button.BackColor = SystemColors.ControlLight;
+                note_open_button.FlatAppearance.MouseOverBackColor = SystemColors.ControlLight;
+                note_open_button.FlatAppearance.BorderSize = 0;
+*/
 
                 note_delete_button.DataContext = filename;
                 note_delete_button.Height = 30;
@@ -37,6 +42,22 @@ namespace SecureNotesApp
                 note_delete_button.Click += delete_note_button_click;
                 note_delete_button.Cursor = Cursors.Hand;
                 note_delete_button.TabIndex = 2;
+
+
+                //note_delete_button.BackColor = SystemColors.Control;
+                note_delete_button.BackgroundImage = Properties.Resources.close_16dp_000000_FILL0_wght400_GRAD0_opsz20;
+                note_delete_button.BackgroundImageLayout = ImageLayout.Zoom;
+
+                note_delete_button.FlatStyle = FlatStyle.Flat;
+                note_delete_button.FlatAppearance.BorderSize = 0;
+                
+               // note_delete_button.FlatAppearance.BorderColor = SystemColors.ControlDark;
+                note_delete_button.BackColor = SystemColors.ControlLight;
+
+                note_delete_button.Margin = new Padding(0);
+                
+                
+
 
                 note_panel.Controls.Add(note_delete_button);
                 note_panel.Controls.Add(note_open_button);
