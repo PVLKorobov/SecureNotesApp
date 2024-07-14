@@ -40,6 +40,7 @@ namespace SecureNotesApp
                 config.AppSettings.Settings.Add("NOTE_FILE_EXTENTION", "txt");
             }
             config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
         }
 
         // Считывание файла
@@ -176,6 +177,7 @@ namespace SecureNotesApp
             check_path(path);
             config.AppSettings.Settings["NOTES_LOCATION"].Value = path;
             config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
         }
 
         // Расширение файлов getter
@@ -189,6 +191,7 @@ namespace SecureNotesApp
         {
             config.AppSettings.Settings["NOTE_FILE_EXTENTION"].Value = extention;
             config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
         }
 
 
