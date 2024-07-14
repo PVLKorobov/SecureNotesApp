@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             notes_list_panel = new Panel();
             add_note_button = new Button();
             info_button = new Button();
@@ -135,12 +136,16 @@
             // 
             // close_current_note_button
             // 
+            close_current_note_button.BackgroundImage = (Image)resources.GetObject("close_current_note_button.BackgroundImage");
+            close_current_note_button.BackgroundImageLayout = ImageLayout.Stretch;
             close_current_note_button.Cursor = Cursors.Hand;
-            close_current_note_button.Location = new Point(3, 3);
+            close_current_note_button.FlatStyle = FlatStyle.Flat;
+            close_current_note_button.ForeColor = SystemColors.Control;
+            close_current_note_button.Location = new Point(0, 0);
+            close_current_note_button.Margin = new Padding(0, 0, 0, 0);
             close_current_note_button.Name = "close_current_note_button";
-            close_current_note_button.Size = new Size(50, 30);
+            close_current_note_button.Size = new Size(42, 42);
             close_current_note_button.TabIndex = 0;
-            close_current_note_button.Text = "<-----";
             close_current_note_button.UseVisualStyleBackColor = true;
             close_current_note_button.Click += close_note_button_click;
             // 
@@ -149,8 +154,8 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(780, 517);
-            Controls.Add(notes_list_panel);
             Controls.Add(current_note_panel);
+            Controls.Add(notes_list_panel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
