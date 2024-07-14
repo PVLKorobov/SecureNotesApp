@@ -58,6 +58,7 @@
             note_title_textbox.TabIndex = 0;
             note_title_textbox.Click += textbox_inFocus;
             note_title_textbox.Enter += textbox_inFocus;
+            note_title_textbox.KeyPress += escape_enter_keyPress;
             // 
             // note_password_textbox
             // 
@@ -70,6 +71,7 @@
             note_password_textbox.TabIndex = 1;
             note_password_textbox.Click += textbox_inFocus;
             note_password_textbox.Enter += textbox_inFocus;
+            note_password_textbox.KeyPress += escape_enter_keyPress;
             // 
             // new_note_label
             // 

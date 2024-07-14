@@ -21,12 +21,20 @@ namespace SecureNotesApp
         }
 
 
-        private void no_button_click(object sender, EventArgs e)
+        private void exit()
         {
             Close();
             Dispose();
         }
+
+
+        // Нажатие на кнопку "нет"
+        private void no_button_click(object sender, EventArgs e)
+        {
+            exit();
+        }
         
+        // Нажатие на кнопку "да"
         private void yes_button_click(object sender, EventArgs e)
         {
             if (main_form.is_editor)
@@ -35,13 +43,20 @@ namespace SecureNotesApp
             }
             Program.delete_note_file(cached_file_name);
             main_form.update_notes_list();
-            Close();
-            Dispose();
+            exit();
+        }
+
+        // Нажатие на enter
+        private void escape_keyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                exit();
+            }
         }
 
 
         private MainForm main_form = null;
         private string cached_file_name;
-        private bool is_editor;
     }
 }

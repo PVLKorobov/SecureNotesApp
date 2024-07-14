@@ -53,6 +53,7 @@
             no_button.Text = "Нет";
             no_button.UseVisualStyleBackColor = true;
             no_button.Click += no_button_click;
+            no_button.KeyPress += escape_keyPress;
             // 
             // yes_button
             // 
@@ -64,6 +65,7 @@
             yes_button.Text = "Да";
             yes_button.UseVisualStyleBackColor = true;
             yes_button.Click += yes_button_click;
+            yes_button.KeyPress += escape_keyPress;
             // 
             // ConfirmDeleteForm
             // 

@@ -96,7 +96,7 @@ namespace SecureNotesApp
         }
 
         // Нажатие на enter или escape
-        private void textbox_keyPress(object sender, KeyPressEventArgs e)
+        private void escape_enter_keyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Return)
             {

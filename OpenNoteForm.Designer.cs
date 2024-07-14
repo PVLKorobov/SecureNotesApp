@@ -54,7 +54,7 @@
             note_password_textbox.TabIndex = 0;
             note_password_textbox.Click += textbox_inFocus;
             note_password_textbox.Enter += textbox_inFocus;
-            note_password_textbox.KeyPress += textbox_keyPress;
+            note_password_textbox.KeyPress += escape_enter_keyPress;
             // 
             // password_label
             // 
