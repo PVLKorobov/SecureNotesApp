@@ -193,6 +193,12 @@ namespace SecureNotesApp
         {
             byte[] Keys = null;
             byte[] K = null;
+            
+            if (input.Length == 0 || input.Length%16!=0)
+            {
+                decoded = false;
+                return null;
+            }
 
             KeyExpansion.Expansion(key, out K, out Keys);
 
