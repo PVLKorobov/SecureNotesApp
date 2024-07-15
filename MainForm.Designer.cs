@@ -35,6 +35,7 @@
             info_button = new Button();
             notes_buttons_list = new FlowLayoutPanel();
             current_note_panel = new Panel();
+            label1 = new Label();
             text_alignments_panel = new Panel();
             alignment_left_button = new Button();
             alignment_right_button = new Button();
@@ -144,6 +145,7 @@
             // 
             // current_note_panel
             // 
+            current_note_panel.Controls.Add(label1);
             current_note_panel.Controls.Add(text_alignments_panel);
             current_note_panel.Controls.Add(text_sizes_panel);
             current_note_panel.Controls.Add(tools_panel);
@@ -155,6 +157,17 @@
             current_note_panel.Name = "current_note_panel";
             current_note_panel.Size = new Size(762, 499);
             current_note_panel.TabIndex = 2;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label1.Location = new Point(56, 29);
+            label1.Margin = new Padding(0);
+            label1.Name = "label1";
+            label1.Size = new Size(78, 18);
+            label1.TabIndex = 15;
+            label1.Text = "Название";
             // 
             // text_alignments_panel
             // 
@@ -233,15 +246,17 @@
             // 
             // subtitle_size_button
             // 
+            subtitle_size_button.BackgroundImage = Properties.Resources.title_small1;
+            subtitle_size_button.BackgroundImageLayout = ImageLayout.Zoom;
             subtitle_size_button.Cursor = Cursors.Hand;
             subtitle_size_button.FlatStyle = FlatStyle.Flat;
             subtitle_size_button.Font = new Font("Microsoft Sans Serif", 9.75F);
+            subtitle_size_button.ForeColor = SystemColors.ControlText;
             subtitle_size_button.Location = new Point(3, 3);
             subtitle_size_button.Margin = new Padding(0);
             subtitle_size_button.Name = "subtitle_size_button";
             subtitle_size_button.Size = new Size(30, 30);
             subtitle_size_button.TabIndex = 13;
-            subtitle_size_button.Text = "16";
             subtitle_size_button.UseVisualStyleBackColor = true;
             subtitle_size_button.Click += set_size_subtitle_button_click;
             // 
@@ -346,9 +361,6 @@
             underline_button.BackgroundImage = Properties.Resources.format_underlined;
             underline_button.BackgroundImageLayout = ImageLayout.Zoom;
             underline_button.Cursor = Cursors.Hand;
-            underline_button.FlatAppearance.BorderColor = SystemColors.ControlDark;
-            underline_button.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            underline_button.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             underline_button.FlatStyle = FlatStyle.Flat;
             underline_button.Location = new Point(3, 111);
             underline_button.Name = "underline_button";
@@ -362,9 +374,9 @@
             current_note_text.BorderStyle = BorderStyle.FixedSingle;
             current_note_text.Cursor = Cursors.IBeam;
             current_note_text.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            current_note_text.Location = new Point(50, 60);
+            current_note_text.Location = new Point(53, 63);
             current_note_text.Name = "current_note_text";
-            current_note_text.Size = new Size(708, 435);
+            current_note_text.Size = new Size(705, 432);
             current_note_text.TabIndex = 0;
             current_note_text.Text = "";
             // 
@@ -372,9 +384,9 @@
             // 
             current_note_title.Cursor = Cursors.IBeam;
             current_note_title.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            current_note_title.Location = new Point(128, 24);
+            current_note_title.Location = new Point(137, 24);
             current_note_title.Name = "current_note_title";
-            current_note_title.Size = new Size(630, 29);
+            current_note_title.Size = new Size(621, 29);
             current_note_title.TabIndex = 1;
             current_note_title.Text = "<note title>";
             current_note_title.TextChanged += current_note_title_TextChanged;
@@ -454,5 +466,6 @@
         private Button alignment_center_button;
         private Button alignment_left_button;
         private Button alignment_right_button;
+        private Label label1;
     }
 }

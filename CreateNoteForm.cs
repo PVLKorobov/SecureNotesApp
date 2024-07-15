@@ -26,6 +26,7 @@ namespace SecureNotesApp
             target.DataContext = true;
             target.Text = message;
             target.ForeColor = Color.Red;
+            this.ActiveControl = null;
         }
 
         // Функция скрытия сообщения об ошибке
