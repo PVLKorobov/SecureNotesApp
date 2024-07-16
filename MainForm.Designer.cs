@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             notes_list_panel = new Panel();
             open_folder_button = new Button();
             settings_button = new Button();
@@ -423,6 +424,7 @@
             Controls.Add(current_note_panel);
             Controls.Add(notes_list_panel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
