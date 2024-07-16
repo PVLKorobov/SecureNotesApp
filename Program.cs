@@ -19,9 +19,6 @@ namespace SecureNotesApp
             // Create configuration object
             config = new Config();
 
-            
-            
-
             // Create notes directory if it doesn't exist
             System.IO.Directory.CreateDirectory(config.get_location());
 

@@ -16,7 +16,7 @@ namespace SecureNotesApp
         {
             notes_buttons_list.Controls.Clear();
 
-            List<string> notesFilenames = FileWork.get_notes_filenames(Program.config);
+            List<string> notesFilenames = FileWork.get_notes_filenames();
             foreach (string filename in notesFilenames)
             {
                 Panel note_panel = new Panel();
@@ -72,7 +72,7 @@ namespace SecureNotesApp
         public void open_note(string fileName, string password, out bool isCorrectPassword)
         {
             isCorrectPassword = false;
-            byte[] encrypted_contents = FileWork.read_file(fileName, Program.config);
+            byte[] encrypted_contents = FileWork.read_file(fileName);
             byte[] decrypted_contents = AES.Decryption(password, encrypted_contents, out isCorrectPassword);
 
             if (isCorrectPassword)
@@ -105,7 +105,7 @@ namespace SecureNotesApp
             RTBOutputStream.Close();
             //
             byte[] encryptedContents = AES.Encryption(cached_password, decryptedContents);
-            FileWork.update_file_contents(fileName, encryptedContents, Program.config);
+            FileWork.update_file_contents(fileName, encryptedContents);
         }
 
         // Переход в главное меню
@@ -159,7 +159,7 @@ namespace SecureNotesApp
         // Нажатие на кнопку директории
         private void open_folder_button_Click(object sender, EventArgs e)
         {
-            FileWork.open_notes_location(Program.config);
+            FileWork.open_notes_location();
         }
 
 
@@ -364,7 +364,7 @@ namespace SecureNotesApp
         private void current_note_title_TextChanged(object sender, EventArgs e)
         {
             string newFileName = current_note_title.Text;
-            FileWork.update_file_name(cached_title, newFileName, Program.config);
+            FileWork.update_file_name(cached_title, newFileName);
             update_notes_list();
             cached_title = newFileName;
         }

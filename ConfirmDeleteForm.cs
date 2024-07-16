@@ -41,7 +41,7 @@ namespace SecureNotesApp
             {
                 main_form.switch_to_main();
             }
-            FileWork.delete_note_file(cached_file_name, Program.config);
+            FileWork.delete_note_file(cached_file_name);
             main_form.update_notes_list();
             exit();
         }

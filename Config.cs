@@ -9,7 +9,7 @@ namespace SecureNotesApp
 {
     internal class Config
     {
-        Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+        public static Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
 
         public Config()
         {

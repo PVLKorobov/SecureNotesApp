@@ -9,14 +9,11 @@ namespace SecureNotesApp
 {
     internal class FileWork
     {
-        
-
-
         // Считывание файла
-        public static byte[] read_file(string fileName, Config config)
+        public static byte[] read_file(string fileName)
         {
-            string NOTE_FILE_EXTENTION = config.get_extention();
-            string NOTES_LOCATION = config.get_location();
+            string NOTE_FILE_EXTENTION = Program.config.get_extention();
+            string NOTES_LOCATION = Program.config.get_location();
 
             byte[] encryptedContents = { };
 
@@ -30,10 +27,10 @@ namespace SecureNotesApp
         }
 
         // Замена текста файла
-        public static void update_file_contents(string fileName, byte[] encryptedContents, Config config)
+        public static void update_file_contents(string fileName, byte[] encryptedContents)
         {
-            string NOTE_FILE_EXTENTION = config.get_extention();
-            string NOTES_LOCATION = config.get_location();
+            string NOTE_FILE_EXTENTION = Program.config.get_extention();
+            string NOTES_LOCATION = Program.config.get_location();
 
             string filePath = $@"{NOTES_LOCATION}\{fileName}.{NOTE_FILE_EXTENTION}";
 
@@ -46,12 +43,12 @@ namespace SecureNotesApp
         }
 
         // Замена имени файла
-        public static void update_file_name(string oldFileName, string newFileName, Config config)
+        public static void update_file_name(string oldFileName, string newFileName)
         {
             if (newFileName != oldFileName)
             {
-                string NOTE_FILE_EXTENTION = config.get_extention();
-                string NOTES_LOCATION = config.get_location();
+                string NOTE_FILE_EXTENTION = Program.config.get_extention();
+                string NOTES_LOCATION = Program.config.get_location();
 
                 string filePath = $@"{NOTES_LOCATION}\{oldFileName}.{NOTE_FILE_EXTENTION}";
 
@@ -63,22 +60,22 @@ namespace SecureNotesApp
         }
 
         // Создание нового файла
-        public static void create_note_file(string fileName, byte[] encryptedContents, Config config)
+        public static void create_note_file(string fileName, byte[] encryptedContents)
         {
-            string NOTE_FILE_EXTENTION = config.get_extention();
-            string NOTES_LOCATION = config.get_location();
+            string NOTE_FILE_EXTENTION = Program.config.get_extention();
+            string NOTES_LOCATION = Program.config.get_location();
 
 
             string filePath = $@"{NOTES_LOCATION}\{fileName}.{NOTE_FILE_EXTENTION}";
             using (File.Create(filePath)) { };
-            update_file_contents(fileName, encryptedContents, config); // записывание зашифрованного пароля в пустой файл
+            update_file_contents(fileName, encryptedContents); // записывание зашифрованного пароля в пустой файл
         }
 
         // Удаление файла
-        public static void delete_note_file(string fileName, Config config)
+        public static void delete_note_file(string fileName)
         {
-            string NOTE_FILE_EXTENTION = config.get_extention();
-            string NOTES_LOCATION = config.get_location();
+            string NOTE_FILE_EXTENTION = Program.config.get_extention();
+            string NOTES_LOCATION = Program.config.get_location();
 
             string filePath = $@"{NOTES_LOCATION}\{fileName}.{NOTE_FILE_EXTENTION}";
             if (File.Exists(filePath))
@@ -89,10 +86,10 @@ namespace SecureNotesApp
 
 
         // Получение списка имён файлов
-        public static List<string> get_notes_filenames(Config config)
+        public static List<string> get_notes_filenames()
         {
             
-            string NOTES_LOCATION = config.get_location();
+            string NOTES_LOCATION = Program.config.get_location();
 
             List<string> notesFilenames = new List<string>();
 
@@ -106,10 +103,10 @@ namespace SecureNotesApp
         }
 
         // Открытие папки с заметками в проводнике
-        public static void open_notes_location(Config config)
+        public static void open_notes_location()
         {
             
-            string NOTES_LOCATION = config.get_location();
+            string NOTES_LOCATION = Program.config.get_location();
 
             System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
             {
@@ -137,13 +134,5 @@ namespace SecureNotesApp
                 throw new ArgumentException("Путь не существует");
             }
         }
-
-
-
-
-
-
-
-        
     }
 }

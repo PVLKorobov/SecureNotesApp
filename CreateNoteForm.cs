@@ -64,7 +64,7 @@ namespace SecureNotesApp
                 string empty_temp = "{\\rtf1\\ansi\\deff0}";
                 byte[] decryptedContents = Encoding.ASCII.GetBytes(empty_temp);
                 byte[] encryptedContents = AES.Encryption(password, decryptedContents);
-                FileWork.create_note_file(fileName, encryptedContents, Program.config);
+                FileWork.create_note_file(fileName, encryptedContents);
                 bool correct_password;
                 main_form.open_note(fileName, password, out correct_password);
 
