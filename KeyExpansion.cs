@@ -8,10 +8,16 @@ namespace SecureNotesApp
 {
     internal class KeyExpansion
     {
+
+        //длинна раундового ключа в байтах
         static int maxKeyLength = 16;
+        //длина основного ключа
         static int keyLength = 32;
-        static int Nk = 8, Nb = 4, Nr = 14;
+        //число 32-ух битных слов, составляющих ключ и число раундов алгоритма
+        static int Nk = 8, Nr = 14;
+        //специальная постоянная матрица
         static byte[] Round = new byte[11] { 0x00, 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1b, 0x36 };
+        //таблица замен элементов
         static byte[] SBox = new byte[16 * 16] {
                     0x63, 0x7c, 0x77, 0x7b, 0xf2, 0x6b, 0x6f, 0xc5, 0x30, 0x01, 0x67, 0x2b, 0xfe, 0xd7, 0xab, 0x76,
                     0xca, 0x82, 0xc9, 0x7d, 0xfa, 0x59, 0x47, 0xf0, 0xad, 0xd4, 0xa2, 0xaf, 0x9c, 0xa4, 0x72, 0xc0,
@@ -31,6 +37,7 @@ namespace SecureNotesApp
                     0x8c, 0xa1, 0x89, 0x0d, 0xbf, 0xe6, 0x42, 0x68, 0x41, 0x99, 0x2d, 0x0f, 0xb0, 0x54, 0xbb, 0x16
                 };
 
+        //подготовка ключа
         private static string NormalizeKey(string key)
         {
             if (string.IsNullOrEmpty(key))
@@ -51,6 +58,7 @@ namespace SecureNotesApp
             return key;
         }
 
+        //функция расширения ключа
         public static void Expansion(string key, out byte[] bKey, out byte[] bKeys)
         {
             key = NormalizeKey(key);
@@ -85,6 +93,7 @@ namespace SecureNotesApp
 
         }
 
+        //преобразование Sbox
         private static byte[] SubWord(byte[] input)
         {
             return new byte[4]{
@@ -95,6 +104,7 @@ namespace SecureNotesApp
                 };
         }
 
+        //вращение
         private static byte[] RotWord(byte[] input)
         {
             return new byte[4] {

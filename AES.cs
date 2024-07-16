@@ -10,8 +10,11 @@ namespace SecureNotesApp
 {
     internal class AES
     {
+        //длинна раундового ключа в байтах
         static int maxKeyLength = 16;
+        //длина основного ключа
         static int keyLength = 32;
+        //таблицы замен элементов
         static byte[] SBox = new byte[16 * 16] {
                     0x63, 0x7c, 0x77, 0x7b, 0xf2, 0x6b, 0x6f, 0xc5, 0x30, 0x01, 0x67, 0x2b, 0xfe, 0xd7, 0xab, 0x76,
                     0xca, 0x82, 0xc9, 0x7d, 0xfa, 0x59, 0x47, 0xf0, 0xad, 0xd4, 0xa2, 0xaf, 0x9c, 0xa4, 0x72, 0xc0,
@@ -49,10 +52,10 @@ namespace SecureNotesApp
                     0x17, 0x2b, 0x04, 0x7e, 0xba, 0x77, 0xd6, 0x26, 0xe1, 0x69, 0x14, 0x63, 0x55, 0x21, 0x0c, 0x7d
                 };
 
+        //число раундов шифрования
+        static int Nr = 14;
 
-        static int Nk = 8, Nb = 4, Nr = 14;
-
-
+        //подготавливает массив байт для дальнейшей работы алгоритма
         private static byte[] NormalizeInput(byte[] input)
         {
             if (input == null)
@@ -74,7 +77,7 @@ namespace SecureNotesApp
             return norm_input;
         }
 
-
+        //функция шифрования файла
         public static byte[] Encryption(string key, byte[] inputText)
         {
             byte[] Keys = null;
@@ -117,7 +120,7 @@ namespace SecureNotesApp
 
 
 
-
+        //реализует умножение для алгоритма AES
         static int Mult(byte a, byte b)
         {
 
@@ -135,11 +138,14 @@ namespace SecureNotesApp
 
             return r;
         }
+        //заменяет каждый элемент массива байт соответвующим элементом таблицы SBox
         static void SubBytes(byte[] block)
         {
             for (int i = 0; i < maxKeyLength; i++)
                 block[i] = SBox[block[i]];
         }
+
+        //сдвиг влево
         static void ShiftRows(byte[] block)
         {
             byte[] temp = new byte[4];
@@ -152,6 +158,8 @@ namespace SecureNotesApp
                     block[(c * 4) + r] = temp[r];
             }
         }
+
+        
         static void MixColumns(byte[] block)
         {
             byte[,] t = new byte[4, 4];
@@ -167,11 +175,15 @@ namespace SecureNotesApp
                 block[12 + i] = (byte)(Mult(3, t[0, i]) ^ t[1, i] ^ t[2, i] ^ Mult(2, t[3, i]));
             }
         }
+
+        //длбавление раундового ключа
         static void AddRoundKey(byte[] block, byte[] keys, int round)
         {
             for (int i = 0; i < maxKeyLength; i++)
                 block[i] = (byte)(block[i] ^ keys[round * 4 + i]);
         }
+
+        //шифрование блока
         static byte[] Cipher(byte[] block, byte[] Keys)
         {
             AddRoundKey(block, Keys, 0);
@@ -188,7 +200,7 @@ namespace SecureNotesApp
             return block;
         }
 
-
+        //функция дешифрования файла        
         public static byte[] Decryption(string key, byte[] input, out bool decoded)
         {
             byte[] Keys = null;
@@ -238,6 +250,7 @@ namespace SecureNotesApp
             return userOutput;
         }
 
+        //расшифровка блока
         static byte[] InvCipher(byte[] block, byte[] Keys)
         {
             AddRoundKey(block, Keys, Nr);
@@ -254,12 +267,14 @@ namespace SecureNotesApp
             return block;
         }
 
+        //обратный к SubButes
         static void InverseSubBytes(byte[] block)
         {
             for (int i = 0; i < maxKeyLength; i++)
                 block[i] = ISBox[block[i]];
         }
 
+        //сдвиг вправо
         static void InverseShiftRows(byte[] block)
         {
             byte[] temp = new byte[4];
