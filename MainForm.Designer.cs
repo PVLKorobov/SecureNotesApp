@@ -372,6 +372,7 @@
             // 
             // current_note_text
             // 
+            current_note_text.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             current_note_text.BorderStyle = BorderStyle.FixedSingle;
             current_note_text.Cursor = Cursors.IBeam;
             current_note_text.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
@@ -421,11 +422,12 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(780, 517);
-            Controls.Add(notes_list_panel);
             Controls.Add(current_note_panel);
+            Controls.Add(notes_list_panel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
+            MaximizeBox = false;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Secure Notes";
