@@ -28,11 +28,15 @@ namespace SecureNotesApp
                 note_open_button.Click += open_note_button_click;
                 note_open_button.Cursor = Cursors.Hand;
                 note_open_button.TabIndex = 1;
-/*                note_open_button.FlatStyle = FlatStyle.Flat;
-                note_open_button.BackColor = SystemColors.ControlLight;
-                note_open_button.FlatAppearance.MouseOverBackColor = SystemColors.ControlLight;
-                note_open_button.FlatAppearance.BorderSize = 0;
-*/
+                string font_name = note_open_button.Font.Name;
+                note_open_button.Font = new Font(font_name, 18, FontStyle.Regular);
+
+                current_note_text.Focus();
+                /*                note_open_button.FlatStyle = FlatStyle.Flat;
+                                note_open_button.BackColor = SystemColors.ControlLight;
+                                note_open_button.FlatAppearance.MouseOverBackColor = SystemColors.ControlLight;
+                                note_open_button.FlatAppearance.BorderSize = 0;
+                */
 
                 note_delete_button.DataContext = filename;
                 note_delete_button.Height = 30;
