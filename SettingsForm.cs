@@ -38,7 +38,7 @@ namespace SecureNotesApp
                 target.ForeColor = Color.Black;
                 if (target.Name == "path_textbox")
                 {
-                    target.Text = Program.get_location();
+                    target.Text = Program.config.get_location();
                 }
                 else
                 {
@@ -60,9 +60,9 @@ namespace SecureNotesApp
         {
             try
             {
-                if (path_textbox.Text != Program.get_location())
+                if (path_textbox.Text != Program.config.get_location())
                 {
-                    Program.set_location(path_textbox.Text);
+                    Program.config.set_location(path_textbox.Text);
                     main_form.update_notes_list();
                 }
                 exit();
@@ -90,7 +90,7 @@ namespace SecureNotesApp
         // Загрузка формы
         private void SettingsForm_Load(object sender, EventArgs e)
         {
-            path_textbox.Text = Program.get_location();
+            path_textbox.Text = Program.config.get_location();
             // DataContext показывает отображается ли ошибка
             path_textbox.DataContext = false;
         }
